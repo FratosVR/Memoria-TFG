@@ -119,14 +119,14 @@ constantes,guionado,Cascaras/bibliografia,config%
 \include{Cascaras/agradecimientos}
 \include{Cascaras/resumen}
 \begin{otherlanguage}{english}
-\include{Cascaras/abstract}
-% Si el trabajo se escribe en inglés, comentar esta línea y descomentar
-% otra igual que hay justo antes de \end{document}
+  \include{Cascaras/abstract}
+  % Si el trabajo se escribe en inglés, comentar esta línea y descomentar
+  % otra igual que hay justo antes de \end{document}
 \end{otherlanguage}
 
 \ifx\generatoc\undefined
 \else
-\include{TeXiS/TeXiS_toc}
+  \include{TeXiS/TeXiS_toc}
 \fi
 
 % Marcamos el  comienzo de  los capítulos (para  la numeración  de las
@@ -148,8 +148,8 @@ constantes,guionado,Cascaras/bibliografia,config%
 % Si el TFG se escribe en inglés, comentar las siguientes líneas 
 % porque no es necesario incluir nuevamente las Conclusiones en inglés
 \begin{otherlanguage}{english}
-\include{Capitulos/Introduction}
-\include{Capitulos/ConclusionsFutureWork}
+  \include{Capitulos/Introduction}
+  \include{Capitulos/ConclusionsFutureWork}
 \end{otherlanguage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -189,7 +189,7 @@ constantes,guionado,Cascaras/bibliografia,config%
 % en TeXiS_pream.tex para más información.
 \ifx\generaindice\undefined
 \else
-%\include{TeXiS/TeXiS_indice}
+  %\include{TeXiS/TeXiS_indice}
 \fi
 
 %
@@ -202,12 +202,12 @@ constantes,guionado,Cascaras/bibliografia,config%
 
 \ifx\generaacronimos\undefined
 \else
-\include{TeXiS/TeXiS_acron}
+  \include{TeXiS/TeXiS_acron}
 \fi
 
 %
 % Final
 %
-\include{Cascaras/fin}
+% \include{Cascaras/fin}
 %\end{otherlanguage}
 \end{document}
