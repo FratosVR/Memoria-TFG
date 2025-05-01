@@ -55,16 +55,14 @@
 % en la  tabla de contenidos una  entrada para marcar  la página donde
 % está el índice de palabras.
 
-\ifx\generatoc\undefined
-\else
-   \addcontentsline{toc}{chapter}{\listacronymname}
-\fi
 
 
 % Generamos la lista de acrónimos (en realidad el índice asociado a la
 % lista "acr" de GlossTeX)
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Glosario}
+\printglossaries
 
-\printglosstex(acr)
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX

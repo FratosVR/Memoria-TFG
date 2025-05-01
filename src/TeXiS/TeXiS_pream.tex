@@ -139,7 +139,9 @@
   \newcommand{\acl}[1]{#1}
   \newcommand{\acf}[1]{#1}
 \else
-  \usepackage{glosstex}
+  \usepackage{glossaries}
+  \makeglossaries
+  \input{acronimos.tex}
 \fi
 
 % shortvrb supuestamente define algunas macros cómodas como carácteres
@@ -251,11 +253,11 @@
 
 % Declaramos el comando \chapterquote para poder meter citas al comienzo de los capítulos
 \DeclareRobustCommand{\chapterquote}[2]{%
-	\begin{flushright}%
-		%\vspace{-1cm}%
-		\parbox{11cm}{\raggedleft\emph{``#1''}\\--- #2}%
-		%\vspace{1cm}%
-	\end{flushright}%
+  \begin{flushright}%
+    %\vspace{-1cm}%
+    \parbox{11cm}{\raggedleft\emph{``#1''}\\--- #2}%
+    %\vspace{1cm}%
+  \end{flushright}%
 }
 
 
@@ -274,8 +276,8 @@
 % pasa de capítulos en español a capítulos en inglés y viceversa.
 
 \ifpdf
-   \RequirePackage[pdfborder=0,hidelinks,hyperindex,pdfpagelabels,hypertexnames=false]{hyperref}
-   \def\pdfBorderAttrs{/Border [0 0 0] } % Ningún borde en los enlaces
+  \RequirePackage[pdfborder=0,hidelinks,hyperindex,pdfpagelabels,hypertexnames=false]{hyperref}
+  \def\pdfBorderAttrs{/Border [0 0 0] } % Ningún borde en los enlaces
 \fi
 
 % Cuando se  genera el  índice, se necesita  el paquete  hyperref, que
@@ -284,7 +286,7 @@
 % al comando anterior. Si no se está en pdf, se incluye directamente
 \ifpdf
 \else
-\usepackage{hyperref}
+  \usepackage{hyperref}
 \fi
 
 \hypersetup{colorlinks=false}
@@ -359,7 +361,7 @@
 
 % Puedes anular la generación del índice si quitas el \makeindex en el
 % preámbulo (supongo que no se generará el .idx).
- 
+
 % http://www.mpi.nl/world/persons/private/robstu/latex/how_to/indexes.html
 % http://ipagwww.med.yale.edu/latex/makeindex.pdf
 
@@ -377,9 +379,9 @@
 
 \ifpdf
 \else
-   \ifx\release\undefined
-      \usepackage{showidx}
-   \fi
+  \ifx\release\undefined
+    \usepackage{showidx}
+  \fi
 \fi
 
 %\citeindextrue Activa la aparición de las referencias en el índice
@@ -391,7 +393,7 @@
 % definido el símbolo correspondiente.
 \ifx\generaindice\undefined
 \else
-\makeindex
+  \makeindex
 \fi
 
 % Pruebas con índices
@@ -410,7 +412,7 @@
 % pdflatex.
 
 \ifx\release\undefined
-%\usepackage{showkeys}
+  %\usepackage{showkeys}
 \fi
 
 
@@ -571,18 +573,18 @@
 \newbox\sf@box
 \newenvironment{SubFloat}[2][]%
 {\def\sf@one{#1}%
-\def\sf@two{#2}%
-\setbox\sf@box\hbox
-\bgroup}%
+  \def\sf@two{#2}%
+  \setbox\sf@box\hbox
+  \bgroup}%
 { \egroup
-\ifx\@empty\sf@two\@empty\relax
-\def\sf@two{\@empty}
-\fi
-\ifx\@empty\sf@one\@empty\relax
-\subfloat[\sf@two]{\box\sf@box}%
-\else
-\subfloat[\sf@one][\sf@two]{\box\sf@box}%
-\fi}
+  \ifx\@empty\sf@two\@empty\relax
+    \def\sf@two{\@empty}
+  \fi
+  \ifx\@empty\sf@one\@empty\relax
+    \subfloat[\sf@two]{\box\sf@box}%
+  \else
+    \subfloat[\sf@one][\sf@two]{\box\sf@box}%
+  \fi}
 \makeatother
 
 
@@ -611,8 +613,8 @@
 % Definimos los nombres en inglés para que ponga figures y tables
 % con minúscula
 \addto\captionsenglish{%
-	\def\listfigurename{List of figures}%
-	\def\listtablename{List of tables}
+  \def\listfigurename{List of figures}%
+  \def\listtablename{List of tables}
 }
 
 % Supuestamente,  codificación   que  tiene  'nativas'   las  palabras
