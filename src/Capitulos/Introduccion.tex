@@ -3,10 +3,12 @@
 
 \chapterquote{La revolución industrial y sus consecuencias han sido un desastre para la raza humana}{Theodore Kaczynski}
 
-En los últimos años se ha visto un gran interés y evolución de las tecnologías de realidad virtual a mano de empresas como Apple con su lanzamiento de las Apple Glasses o Meta con el lanzamiento de las Meta Quest 3 o su interés por el "Metaverso" con su aplicación de Meta Horizon Worlds.
-Es por ello que es interesante investigar la comunicación no verbal en entornos virtuales, ya no solo para aplicaciones con varios usuarios si no también para poder mejorar interacciones con personajes no jugables (NPCs) en este tipo de entornos. \\ \\
-Nuestra propuesta en este Trabajo de Fin de Grado es una primera aproximación de cómo podemos usar la Inteligencia Artificial y la tecnología de captura de movimiento para lograr esa mejora en las interacciones en los mundos virtuales mediante la comunicación no verbal, siendo nuestro caso la exploración de la capacidad de clasificar distintos gestos.
-Los gestos en los que nos hemos centrado han sido seis gestos que hemos considerado útiles a la hora de que un NPC pueda reconocerlo en un videojuego. Estos gestos han sido:
+En los últimos años se ha visto un gran interés y evolución de las tecnologías de realidad virtual a mano de empresas como Apple con su lanzamiento de las Apple Glasses o Meta con el lanzamiento de las Meta Quest 3 o su interés por el \gls{metaverso} con su aplicación de Meta Horizon Worlds.
+
+Es por ello que es interesante investigar la comunicación no verbal en entornos virtuales, ya no solo para aplicaciones con varios usuarios si no también para poder mejorar interacciones con \glspl{npc} en este tipo de entornos.
+
+Nuestra propuesta en este Trabajo de Fin de Grado es una primera aproximación de cómo se puede usar la \gls{ia} y la tecnología de captura de movimiento para lograr esa mejora en las interacciones en los mundos virtuales mediante la comunicación no verbal, siendo este caso la exploración de la capacidad de clasificar distintos gestos.
+Los gestos seleccionados han sido seis gestos que se han útiles a la hora de que un NPC pueda reconocerlo en un videojuego. Estos gestos han sido:
 \begin{enumerate}
 	%\renewcommand{\theenumi}{\alph{enumi}}
 	\item Bailar
@@ -17,18 +19,18 @@ Los gestos en los que nos hemos centrado han sido seis gestos que hemos consider
 	\item Correr
 \end{enumerate}
 
-Para poder realizar este trabajo se ha requerido usar las gafas de realidad virtual Oculus Quest 2 y 3 y el traje de captura de movimiento Perception Neuron 3, de la empresa Noitom.
+Para poder realizar este trabajo se ha requerido usar las gafas de realidad virtual Meta (antes conocidas como Oculus) Quest 2 y 3 y el traje de captura de movimiento Perception Neuron 3, de la empresa Noitom, como hardware y Python C\# y Unity como los requisitos de software.
 \section{Motivación}
-Estudio del reconocimiento de gestos mediante Inteligencia Artificial para posibles implementaciones en el estudio y mejora de la comunicación no verbal en entornos virtuales.
+Estudio del reconocimiento de gestos mediante \gls{ia} para posibles implementaciones en el estudio y mejora de la comunicación no verbal en entornos virtuales.
 
 \section{Objetivos}
-Implementación de un modelo de Inteligencia Artificial que, con baja latencia, permita identificar el gesto que se esté realizando con un traje de captura de movimiento.
+Implementación de un modelo de \gls{ia} que, con baja latencia, permita identificar el gesto que se esté realizando con un traje de captura de movimiento.
 
 \section{Plan de trabajo}
 Nuestro plan de trabajo consiste en varios pasos:
 \begin{enumerate}
 	%\renewcommand{\theenumi}{\alph{enumi}}
 	\item Búsqueda de un dataset: generar un dataset lo suficientemente grande con varios ejemplos de gestos como para poder entrenar de forma adecuada diferentes modelos.
-	\item Implementación de modelos de Inteligencia Artificial: implementación de varios modelos de Inteligencia Artificial para poder hacer una comparativa entre ellos y decidir cuál es el más adecuado teniendo en cuenta su velocidad de predicción y su precisión.
+	\item Implementación de modelos de \gls{ia}: implementación de varios modelos de \gls{ia} para poder hacer una comparativa entre ellos y decidir cuál es el más adecuado teniendo en cuenta su velocidad de predicción y su precisión.
 	\item Desarrollo de una aplicación final: desarrollo de una aplicación para las Oculus Quest a forma de demo en la que se conecte al modelo elegido y se pueda ver en tiempo real su uso.
 \end{enumerate}

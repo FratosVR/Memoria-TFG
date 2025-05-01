@@ -2,7 +2,42 @@
 \label{cap:introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-Introduction to the subject area. This chapter contains the translation of Chapter \ref{cap:introduccion}.
+\chapterquote{La revolución industrial y sus consecuencias han sido un desastre para la raza humana}{Theodore Kaczynski}
+
+In recent years, there has been a great interest and evolution of virtual reality technologies led by companies such as Apple with the launch of Apple Glasses or Meta with the launch of Meta Quest 3 or its interest in the \gls{metaverse} with its application ``Meta Horizon Worlds''.
+
+
+It is for this reason that it is interesting to investigate non-verbal communication in virtual environments, not only for applications with multiple users but also to improve interactions with \glspl{npc} in these types of environments.
+
+
+The proposal in this Bachelor's Thesis is a first approach to how we can use Artificial Intelligence and motion capture technology to achieve this improvement in interactions in virtual worlds through non-verbal communication, being our case the exploration of the ability to classify different gestures.
+The gestures we have focused on are six gestures that we have considered useful for an NPC to recognize in a video game. These gestures are:
+\begin{enumerate}
+	%\renewcommand{\theenumi}{\alph{enumi}}
+	\item Dance
+	\item Greet
+	\item Point
+	\item Sit down
+	\item Fight
+	\item Run
+\end{enumerate}
+
+To carry out this work, we have used the Meta (formerly Oculus) Quest 2 and 3 virtual reality glasses and the Perception Neuron 3 motion capture suit, from the company Noitom, as hardware and Python, C\# and Unity as the software requirements.
+\section{Motivation}
+Research on gesture recognition using \gls{ai} for possible implementations in the study and improvement of non-verbal communication in virtual environments.
+
+\section{Objectives}
+Implementation of an \gls{ai} model that, with low latency, allows identifying the gesture being performed with a motion capture suit.
+
+\section{Work Plan}
+The Work Plan consists of several steps:
+
+\begin{enumerate}
+	%\renewcommand{\theenumi}{\alph{enumi}}
+	\item Search for a dataset: generate a dataset large enough with several examples of gestures to adequately train different models.
+	\item Implementation of \gls{ai} models: implementation of several \gls{ai} models to make a comparison between them and decide which one is the most suitable considering its prediction speed and accuracy.
+	\item Development of a final application: development of an application for the Meta Quest as a demo that connects to the chosen model and allows real-time usage.
+\end{enumerate}
 
 
 

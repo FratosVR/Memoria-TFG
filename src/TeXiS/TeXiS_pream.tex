@@ -52,98 +52,6 @@
 
 %\usepackage[spanish]{layout}
 
-% El  paquete  glosstex  te  permite  generar listas  de  acrónimos  y
-% glosarios.  En  realidad  te   permite  crear  listas  múltiples  de
-% cualquier cosa,  con tal de que  des un identificador  a cada lista.
-% Luego de  manera predeterminada controla  dos listas, una  de nombre
-% "acr" pensada para acrónimos, y otra "glo" para el glosario.
-
-%
-% La idea  es tener uno o  varios ficheros externos  donde se mantiene
-% una "base  de datos" de acrónimos,  de palabras para  el glosario, o
-% de, en  general, entradas  para cualquiera de  la lista  de términos
-% gestionadas por glosstex. Esos ficheros normalmente llevan extensión
-% .gdf (Glossary  Data File, supongo),  y, por aclarar,  son similares
-% conceptualmente a  los ficheros .bib. En cada  entrada se especifica
-% una etiqueta que  la identifica y que normalmente  se utiliza cuando
-% aparece dicha entrada en alguna de las listas en el documento final.
-% También  puede opcionalmente  especificarse un  texto en  LaTeX para
-% dicha entrada si  queremos poner otra o darle  formato (por ejemplo,
-% si  queremos meter  en  el glosario  el  término LaTeX,  normalmente
-% querremos usar  como etiqueta  identificativa la cadena  LaTeX, pero
-% luego queremos  que al escribirlo  en el documento salga  su versión
-% pija conseguida  mediante \LaTeX{}). También  tiene una "descripción
-% larga"  (útil dependiendo  de  la configuración)  y, finalmente,  la
-% descripción de la entrada.
-%
-%
-% Por ejemplo, una entrada sin descripción corta sería:
-%
-%   @entry{LaTeX, \LaTeX{}} Herramienta basada en \TeX{} para
-%   facilitar la creación de documentación.
-%
-
-% Puedes consultar  más información sobre  el formato en  el fichero
-% acronimos.gdf.
-
-% La idea es tener tantos ficheros gdf como queramos, y reutilizarlos
-% entre todos los documentos que necesitemos crear. Posteriormente, a
-% lo largo de esos documentos, referenciamos su uso. En concreto,
-% indicamos al sistema que queremos que una determinada entrada se
-% incluya en una de las listas gestionadas por GlossTeX.
-%
-% Para eso:
-%
-%  \glosstex[(<lista>)]{<etiqueta>}
-%
-% Lo de <lista> es opcional. Si no se especifica, se entiende "glo",
-% que se supone que contiene el glosario normal. El soporte "nativo"
-% para la lista de acrónimos queda patente porque para añadir uno
-% basta con:
-%
-%  \acronym{<etiqueta>}
-%
-% que es sinónimo de \glosstex(acr){<etiqueta>}
-%
-% La  aparición   de  estos   comandos  ocasionan  la   generación  de
-% anotaciones en los ficheros .aux correspondientes. Esos .aux hay que
-% procesarlos con la herramienta  glosstex, que genera un fichero .gxs
-% con información  sobre las entradas referenciadas y  su contenido, y
-% un .gxg con un log. El .gxs (si todo fue bien) es procesado de nuevo
-% para ser  ordenado y para aplicarle  estilo. Esto se  realiza con la
-% herramienta externa  makeindex, y usando el  estilo glosstex.ist. El
-% resultado es un  fichero .glx, que por fin  tiene todo correcto. Ese
-% fichero es  utilizado por el comando \printglosstex  dentro de algún
-% fichero .tex en la proxima invocación a LaTeX
-%
-% Una cosa interesante es en el uso de acrónimos. Al igual que podemos
-% utilizar  con natbib cosas  como \citeyear  o \citeauthor,  con esto
-% podemos  hacer \ac{<etiqueta>},  y el  sistema te  pone  el acrónimo
-% automáticamente.  Esto  no  parece   muy  útil,  si  se  piensa  que
-% normalmente el  acrónimo será igual a  la etiqueta ;-)  La gracia es
-% que, además,  la primera vez que  se hace, te  pone entre paréntesis
-% también la forma larga 8-)
-%
-% También puedes usar \acf si quieres  que te aparezca las siglas y el
-% significado  entre  paréntesis en  algún  momento.  En realidad  hay
-% muchas más cosas, pero no las he mirado todas.
-%
-% http://www.ctan.org/tex-archive/help/Catalogue/entries/glosstex.html
-\ifx\generaacronimos\undefined
-  % No queremos acrónimos. Como no incluiremos el paquete glosstex
-  % redefinimos sus comandos para que no cruja si se han usado.
-  \newcommand{\glosstex}[1]{}
-  \newcommand{\acronym}[1]{}
-  \newcommand{\ac}[1]{#1}
-  \newcommand{\acs}[1]{#1}
-  \newcommand{\acl}[1]{#1}
-  \newcommand{\acf}[1]{#1}
-\else
-  \usepackage{glossaries}
-  \makeglossaries
-  \input{acronimos.tex}
-\fi
-
 % shortvrb supuestamente define algunas macros cómodas como carácteres
 % de escape.  Por ejemplo, para poner  un < normalmente  hay que hacer
 % una  ecuación:   $<$.  Este   paquete  define  algunas   macros  más
@@ -278,6 +186,99 @@
 \ifpdf
   \RequirePackage[pdfborder=0,hidelinks,hyperindex,pdfpagelabels,hypertexnames=false]{hyperref}
   \def\pdfBorderAttrs{/Border [0 0 0] } % Ningún borde en los enlaces
+\fi
+
+% El  paquete  glosstex  te  permite  generar listas  de  acrónimos  y
+% glosarios.  En  realidad  te   permite  crear  listas  múltiples  de
+% cualquier cosa,  con tal de que  des un identificador  a cada lista.
+% Luego de  manera predeterminada controla  dos listas, una  de nombre
+% "acr" pensada para acrónimos, y otra "glo" para el glosario.
+
+%
+% La idea  es tener uno o  varios ficheros externos  donde se mantiene
+% una "base  de datos" de acrónimos,  de palabras para  el glosario, o
+% de, en  general, entradas  para cualquiera de  la lista  de términos
+% gestionadas por glosstex. Esos ficheros normalmente llevan extensión
+% .gdf (Glossary  Data File, supongo),  y, por aclarar,  son similares
+% conceptualmente a  los ficheros .bib. En cada  entrada se especifica
+% una etiqueta que  la identifica y que normalmente  se utiliza cuando
+% aparece dicha entrada en alguna de las listas en el documento final.
+% También  puede opcionalmente  especificarse un  texto en  LaTeX para
+% dicha entrada si  queremos poner otra o darle  formato (por ejemplo,
+% si  queremos meter  en  el glosario  el  término LaTeX,  normalmente
+% querremos usar  como etiqueta  identificativa la cadena  LaTeX, pero
+% luego queremos  que al escribirlo  en el documento salga  su versión
+% pija conseguida  mediante \LaTeX{}). También  tiene una "descripción
+% larga"  (útil dependiendo  de  la configuración)  y, finalmente,  la
+% descripción de la entrada.
+%
+%
+% Por ejemplo, una entrada sin descripción corta sería:
+%
+%   @entry{LaTeX, \LaTeX{}} Herramienta basada en \TeX{} para
+%   facilitar la creación de documentación.
+%
+
+% Puedes consultar  más información sobre  el formato en  el fichero
+% acronimos.gdf.
+
+% La idea es tener tantos ficheros gdf como queramos, y reutilizarlos
+% entre todos los documentos que necesitemos crear. Posteriormente, a
+% lo largo de esos documentos, referenciamos su uso. En concreto,
+% indicamos al sistema que queremos que una determinada entrada se
+% incluya en una de las listas gestionadas por GlossTeX.
+%
+% Para eso:
+%
+%  \glosstex[(<lista>)]{<etiqueta>}
+%
+% Lo de <lista> es opcional. Si no se especifica, se entiende "glo",
+% que se supone que contiene el glosario normal. El soporte "nativo"
+% para la lista de acrónimos queda patente porque para añadir uno
+% basta con:
+%
+%  \acronym{<etiqueta>}
+%
+% que es sinónimo de \glosstex(acr){<etiqueta>}
+%
+% La  aparición   de  estos   comandos  ocasionan  la   generación  de
+% anotaciones en los ficheros .aux correspondientes. Esos .aux hay que
+% procesarlos con la herramienta  glosstex, que genera un fichero .gxs
+% con información  sobre las entradas referenciadas y  su contenido, y
+% un .gxg con un log. El .gxs (si todo fue bien) es procesado de nuevo
+% para ser  ordenado y para aplicarle  estilo. Esto se  realiza con la
+% herramienta externa  makeindex, y usando el  estilo glosstex.ist. El
+% resultado es un  fichero .glx, que por fin  tiene todo correcto. Ese
+% fichero es  utilizado por el comando \printglosstex  dentro de algún
+% fichero .tex en la proxima invocación a LaTeX
+%
+% Una cosa interesante es en el uso de acrónimos. Al igual que podemos
+% utilizar  con natbib cosas  como \citeyear  o \citeauthor,  con esto
+% podemos  hacer \ac{<etiqueta>},  y el  sistema te  pone  el acrónimo
+% automáticamente.  Esto  no  parece   muy  útil,  si  se  piensa  que
+% normalmente el  acrónimo será igual a  la etiqueta ;-)  La gracia es
+% que, además,  la primera vez que  se hace, te  pone entre paréntesis
+% también la forma larga 8-)
+%
+% También puedes usar \acf si quieres  que te aparezca las siglas y el
+% significado  entre  paréntesis en  algún  momento.  En realidad  hay
+% muchas más cosas, pero no las he mirado todas.
+%
+% http://www.ctan.org/tex-archive/help/Catalogue/entries/glosstex.html
+\ifx\generaacronimos\undefined
+  % No queremos acrónimos. Como no incluiremos el paquete glosstex
+  % redefinimos sus comandos para que no cruja si se han usado.
+  \newcommand{\glosstex}[1]{}
+  \newcommand{\acronym}[1]{}
+  \newcommand{\ac}[1]{#1}
+  \newcommand{\acs}[1]{#1}
+  \newcommand{\acl}[1]{#1}
+  \newcommand{\acf}[1]{#1}
+\else
+  \usepackage[nonumberlist,toc,nopostdot,style=long,hyperfirst=true]{glossaries}
+
+  \makeglossaries
+  \input{acronimos.tex}
 \fi
 
 % Cuando se  genera el  índice, se necesita  el paquete  hyperref, que
