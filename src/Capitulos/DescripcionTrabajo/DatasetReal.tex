@@ -1,6 +1,6 @@
 \section{Dataset real}
 \label{sec:datasetReal}
-Debido a que las animaciones encontradas en el banco de animaciones no eran las suficientes y estaban descompensadas (TO DO: METER GRÁFICA DE LA CANTIDAD DEL DATASET Y QUE SE VEA LA DESCOMPENSACIÓN) se decidió crear una herramienta para poder recoger los datos de usuarios.
+Debido a que las animaciones encontradas en el banco de animaciones no eran las suficientes y estaban descompensadas se decidió crear una herramienta para poder recoger los datos de usuarios.
 
 \subsection{Funcionamiento de la herramienta}
 La herramienta se conecta con el traje de captura de movimiento mediante una malla proporcioanda por el plugin (TO DO: REFERENCIA A LA WEB DEL PLUGIN).
@@ -11,9 +11,14 @@ Finalmente cuando la herramienta está ejecutándose y se le da a la tecla ''esp
 En este estado la aplicación escribe en cada frame todos los componentes de la posición y rotación (en forma de vector de ángulos de Euler) de cada hueso.
 Cuando se le vuelve a dar al espacio la aplicación cierra el fichero y vuelve a un estado de no grabación.
 
-En la siguiente figura (TO DO: REFERENCIA FIGURA) se muestra un diagrama de cómo se conectan los diferentes componentes necesarios en esta herramienta
+En la figura \ref{fig:MocapDumper} se muestra un diagrama de cómo se conectan los diferentes componentes necesarios en esta herramienta
 
-(TO DO: HABLAR EN PROFUNDIDAD DE LA HERRAMIENTA. UN UML ESTARÍA BIEN)
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Imagenes/Vectorial/MocapDumper.pdf}
+	\caption{Diagrama de la conexión entre los distintos componentes de la herramienta, llamada Mocap Dumper}
+	\label{fig:MocapDumper}
+\end{figure}
 
 \subsection{Recogida de datos}
 La recogida de datos consistió en ponerle el traje de captura de movimiento a los usuarios y pedirles que realizasen tres tomas de cada uno de los gestos, a excepción del gesto de baile, ya que de ese gesto había basantes más datos que el resto.
