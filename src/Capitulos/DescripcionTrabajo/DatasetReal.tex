@@ -3,10 +3,9 @@
 Debido a que las animaciones encontradas en el banco de animaciones no eran las suficientes y estaban descompensadas se decidió crear una herramienta para poder recoger los datos de usuarios.
 
 \subsection{Funcionamiento de la herramienta}
-La herramienta se conecta con el traje de captura de movimiento mediante una malla proporcioanda por el plugin (TO DO: REFERENCIA A LA WEB DEL PLUGIN).
-Este plugin se conecta a la aplicación mediante la dirección IP de la máquina que ejecuta Axis Studio y sockets TCP a un puerto que puedes configurar en la aplicación de Axis Studio. (TO DO: PONER CAPTURA DE LA CONFIGURACIÓN DE AXIS STUDIO)
-
+La herramienta se debe conectar con el traje como hemos mencionado anteriormente en el apartado \ref{subsec:NeuronMocapLive}
 Una vez conectado se le debe pasar al componente MocapDumper el nombre de la animación que se va a grabar, el número de toma de esa animación y un número que sirva como identifidor de usuario.
+
 Finalmente cuando la herramienta está ejecutándose y se le da a la tecla ''espacio'' genera un CSV del formato ''animación\_User\_Número de ususario\_Take\_Número de toma'' (si el fichero ya existía lo sobreescribe), escribe la misma cabecera del CSV que se menciona en la tabla \ref{tab:cabecera-csv} y pone la aplicación en estado de grabación.
 En este estado la aplicación escribe en cada frame todos los componentes de la posición y rotación (en forma de vector de ángulos de Euler) de cada hueso.
 Cuando se le vuelve a dar al espacio la aplicación cierra el fichero y vuelve a un estado de no grabación.

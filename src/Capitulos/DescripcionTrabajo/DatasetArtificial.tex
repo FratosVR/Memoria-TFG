@@ -1,16 +1,17 @@
 \section{Dataset Artificial}
 \label{sec:datasetArtificial}
-- MIXAMO COMO BANCO DE ANIMACIONES
 
-- HERRAMIENTA PARA SACAR ANIMACIONES DE MIXAMO MEDIANTE UNA PALABRA CLAVE
+El banco de animaciones en el que fueron buscados los gestos necesarios fue Mixamo. \footnote{Página web de Mixamo: \url{https://www.mixamo.com}}
 
-- FALLO CON LOS ASSETS BUNDLES (AUNQUE SEA COMENTARLO)
+Mixamo es una página web creada por Adobe en la que se encuntran de manera gratuita modelos con un \gls{rig} humanoide y animaciones para estos rigs, además de una funcionalidad que permite crear el \gls{rig} de un personaje que se suba a la página.
+En la página hay un buscador en el que puedes buscar tipos de animaciones, pero como no es viable descargarse todas las animaciones de todos los gestos buscados se usó una herramienta para automatizarlo.
 
-- HERRAMIENTA DE UNITY PARA GENERAR EL ANIMATOR EN TIEMPO REAL (ALGUNA CAPTURA DEL TIME LAPSE CON REMY)
+\subsection{Herramienta para descargarse animaciones de Mixamo de forma automática}
 
-- CÓMO GUARDA LOS DATOS ESA MISMA HERRAMIENTA 
+TO DO: HABLAR DE LA HERRAMIENTA ENCONTRADA Y PERSONALIZADA
 
-- RESULTADOS FINALES OBTENIDOS
+Las animaciones descargadas tienen un formato \gls{FBX}, por lo que era necesario pasarlas a un formato que puedan usar los modelos de \gls{ia}.
+Para ello se decidió pasar la información relevante de los huesos en la toda la animación (su posición y rotación en cada frame) a un archivo CSV, donde cada columna iba a ser esta información y cada fila un frame de la animación. En la tabla \ref{tab:cabecera-csv} se puede ver la cabecera para los CSV
 
 \begin{longtblr}[
     caption={Cabecera del \gls{csv} de cada animación, en órden descendente y de izquierda a derecha},
@@ -323,3 +324,41 @@ Robot\_RightHandThumb3\_rotx  &
 Robot\_RightHandThumb3\_roty  &
 Robot\_RightHandThumb3\_rotz    \\
 \end{longtblr}
+
+Como no es viable ni escalable meter todas las animaciones a un proyecto de Unity ni crear un \gls{Animator} con todas estas se ideó una herramienta en Unity que se metiese todas las animaciones y contruía el Animator en tiempo de ejecución.
+
+\subsection{Carga mediante asset bundles}
+En un principio se pensó en usar los assets bundles para cargar las animaciones.
+Los assets bundles son archivos de Unity que contienen archivos serializados (cualquier asset para un videojuego menos código) y pueden cargarse en tiempo de ejecución.
+Finalmente se descartó la idea de usar este tipo de archivos, ya que necesitan construirse en un proyecto de Unity, por lo que no solucionaba el problema de meter las animaciones a mano a un proyecto de Unity
+
+\subsection{Carga mediante Asset Database}
+Finalmente se decidió usar Asset Database para la carga automática de las animaciones.
+Asset Database es una API de Unity que permiten trabajar con assets, siempre y cuando estén incluídos en el proyecto aunque no necesariamente cargados.
+Para suplir la condición de que estuviesen incluídos en el proyecto se hizo un script que descargaba las animaciones, separadas por carpetas cuyo nombre era el tipo de gesto, desde la base de datos de Kaggle hacia la carpeta ''Resources'' del proyecto y ejecutaba desde línea de comandos el editor del proyecto.
+
+Una vez las animaciones estuviesen descargadas en la carpeta de ''Resources'' del proyecto se busca iterativamente por la carpeta para cargar las animaciones y guardarse la relación entre el tipo de gesto y la animación.
+Una vez completado empieza la ejecución de las animaciones.
+
+Esta ejecución consiste en cargar la animación en la máquina de estados del \gls{Animator} gracias a un componente llamado ''Animator Override Controller'', que permite cambiar el clip de animación de una instancia del \gls{Animator} sin cambiar la lógica de su máquina de estados.
+Cuando empieza la animación se crea un CSV con el formato ''Animación\_Número de animación.csv'' y empieza su ejecución.
+Una vez finalizada la ejecución de una animación se cierra el CSV y se busca la siguiente animación.
+
+(PONER FOTO DE REMY BAILANDO)
+
+En la figura \ref{fig:MixamoDumper} se puede ver un diagrama de flujo del funcionamiento de esta herramienta.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/FlujoMixamoDumper.pdf}
+	\caption{Diagrama de flujo de la herramienta que carga y ejecuta las animaciones de Mixamo en tiempo de ejecución, llamada Mixamo Dumper}
+	\label{fig:MixamoDumper}
+\end{figure}
+
+Al finalizar todas las animaciones se cierra el editor de Unity y se procesan los CSV resultantes.
+
+La ventaja de hacer esta herramienta es que es independiente del número de gestos y de animaciones por cada gesto, lo que hace que esta herramienta haga escalable el caso de que se quieran introducir o quitar gestos.
+
+\subsection{Tratamiento de CSV resultantes}
+
+TO DO: SECCIÓN POR HACER
