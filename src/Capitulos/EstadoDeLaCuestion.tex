@@ -22,6 +22,25 @@ La captura de movimiento es una técnica que permite digitalizar el movimiento d
 
 \section{Modelos de \gls{ia}}
 
+La inteligencia artifical ha sido un tópico de desarrollo e investigación en los útlimos años. Aunque el desarrollo en los últimos años se ha centrado ha centrado sobre todo en el ámbito de las \glspl{ia} generativas, este estudio se va a centrar sobre todo en el uso de redes neuronales e \glspl{ia} de clasificación más tradicionales.
+
+\subsection{Tecnologías de \gls{ia}}
+
+En la actualidad, el mundo de la \gls{ia} está centrado en el desarrollo en python mediante el uso de librerías programadas en C++. Las librerías más comunes son Tensorflow\footnote{Enlace a la página principal de Tensorflow \url{https://www.tensorflow.org/}}, Pytorch\footnote{Enlace a la página principal de Pytorch \url{https://pytorch.org/}} y scikit-learn\footnote{Enlace a la página principal de Scikit-learn \url{https://scikit-learn.org/stable/}}.
+
+Tensorflow tiene un enfoque más orientado a la producción y despliegue de modelos de \gls{ia} a un nivel empresarial, pytorch es más usado en el ámbito académico y de investigación por su capacidad de rápido prototipado. Scikit-learn se usa más para enseñar los principios de la \gls{ia} y desarrollar modelos más ligeros y más tradicionales.
+
+Estas librerías se usan en conjunto con Numpy\footnote{Enlace a la página principal de Numpy: \url{https://numpy.org/}} y Pandas\footnote{Enlace a la página principal de Pandas: \url{https://pandas.pydata.org}} para conseguir unos cálculos más efectivos sobre la gran cantidad de datos que se necesitan en el ciclo de vida de un modelo de \gls{ia}.
+
+\subsection{Tensorflow vs Pytorch}
+
+Las dos librerías poseen ventajas y desventajas que las hacen más o menos igual de viables para este proyecto. Mientras que Pytorch permite una rápida experimentación y prototipación, Tensorflow da facilidades a la hora de desplegar los modelos en formato \gls{api}.
+
+Tensroflow ofrece facilidades como Tensorflow Serving\footnote{Enlace a la página de Tensorflow Serving \url{https://www.tensorflow.org/tfx/guide/serving}} y TensorBoard\footnote{Enlace a la página de Tensorboard \url{https://www.tensorflow.org/tensorboard}} para el despliegue y visualización de los modelos. Pytorch ofrece una librería llamada TorchServe\footnote{Enlace a la página de TorchServe \url{https://pytorch.org/serve/}} que permite el despliegue de modelos, pero no tiene una herramienta como Tensorboard para la visualización de los modelos.
+
+\subsection{YDF vs Scikit-learn}
+
+Scikit-learn e YDF(\cite{GBBSP23}) comparten un punto en común: los árboles de decisión. Los árboles de decisión son modelos de aprendizaje automático no supervisado usados para tareas de clasificación y regresión. Estos modelos se basan en la idea de dividir distintos grupos a partir de distintos criterios dados. Estas divisiones se hacen en forma de árbol binario, dando así razón a su nombre.
 
 \section{Entornos virtuales}
 Como se puede ver en el artículo \cite{NOVE} se empezó a hablar en la década de los 90 de entornos virtuales y el \gls{metaverso} como nuevas formas de comunicarse con las personas.
@@ -37,3 +56,4 @@ Empresas como Apple o Meta están apostando en la tecnología \gls{vr}, sacando 
 Además, Meta está centrada en la idea de \gls{metaverso} como un espacio digital en el que se puede socializar.
 
 Con la idea de mejorar la inmersión en entornos virtuales se ideó este proyecto en el que, mediante la captura de movimiento, se puede usar la comunicación no verbal para expresar ciertas acciones y el entorno sea capaz de reconocer lo que estamos haciendo. Todo esto pensado para que se pueda usar en entornos de \gls{vr} para llevar la inmersión al máximo
+
