@@ -2,6 +2,20 @@
 \label{cap:estadoDeLaCuestion}
 En este capítulo se presenta el estado del arte de los distintos elementos que componen el trabajo. Estos campos son la comunicación no verbal en entornos virtuales, la captura de movimiento, distintos modelos de \gls{ia}, motores de videojuegos (en concreto Unity) y el estado actual de los entornos virtuales.
 
+\section{Entornos virtuales}
+Como se puede ver en el artículo \cite{NOVE} se empezó a hablar en la década de los 90 de entornos virtuales y el \gls{metaverso} como nuevas formas de comunicarse con las personas.
+Estos entornos virtuales al principio eran muy sencillos, con pocas actividades que realizar y el chat escrito como única forma de comunicarse. Algún ejemplo de estos entornos virtuales eran el Second Life o el Habbo Hotel.
+
+Pero con la aparición de la \gls{vr} se hicieron populares entornos virtuales focalizados en esta tecnología, ya que ofrecía un grado de interacción superior a los anteriores mencionados.
+Junto a esto se empieza a hablar de ``inmersión'' y ``presencia'': dos términos que, a menudo se usan como sinónimos, pero son ligeramente distintos aunque están muy relacionados.
+Como lo define el artículo \cite{MRPI}, la presencia es la calidad experimental en entornos virtuales mientras que la inmersión está asociado con los aspectos técnicos de un sistema virtual que ayudan al usuario a potenciar la sensación de presencia.
+Estudios recientes como \cite{FPPS} demuestran como la presencia, tanto la nuestra propia como social, son potenciadores del apoyo social percibido, lo que se asocia con el bienestar de los usuarios; mientras que el estudio \cite{GVR} muestra que, aunque no haya mejoras performáticas entre jugar en entornos inmersivos (\gls{vr}) y no inmersivos (un ordenador), los jugadores encontraron más emocionantes y con mayor presencia los entornos interactivos.
+
+Con todo esto es natural que las empresas inviertan en tecnologías que aumenten la sensación de inmersión para lograr una mayor presencia.
+Empresas como Apple o Meta están apostando en la tecnología \gls{vr}, sacando recientemente las gafas Apple Vision Pro (2024) y Meta Quest 3 (2023); mejorando aspectos como la calidad de las cámaras, el sonido, el reconocimiento de gestos y su comodidad que pueden amplificar la sensación de inmersión cuando se utilizan.
+Además, Meta está centrada en la idea de \gls{metaverso} como un espacio digital en el que se puede socializar.
+
+Con la idea de mejorar la inmersión en entornos virtuales se ideó este proyecto en el que, mediante la captura de movimiento, se puede usar la comunicación no verbal para expresar ciertas acciones y el entorno sea capaz de reconocer lo que estamos haciendo. Todo esto pensado para que se pueda usar en entornos de \gls{vr} para llevar la inmersión al máximo
 
 %Dejo esto por aquí a ver qué te parecen estos apartados para hablar de ellos
 \section{Comunicación no verbal en entornos virtuales}
@@ -18,7 +32,24 @@ Los usuarios de esta aplicación han buscado distintas formas de conseguir una m
 La captura de movimiento es una técnica que permite digitalizar el movimiento de una persona. Esta técnica se usa sobre todo en el ámbito de la animación, el cine y los videojuegos sobre todo. HABLAR DE  TRAJES DE CAPTURA DE MOVIMIENTO CON LUCES, DE TRAJES COMO EL PN3 Y DE LOS FURROS CON ONDAS CEREBRALES.
 
 \section{Motores de videojuegos}
+Un motor de videojuegos es un software que proporciona herramientas para desarrollar y ejecutar un videojuego.
+Estos motores están compuestos a su vez de otros motores más específicos que se encargan de funcionalidades básicas para un videojuego para que el desarrollador del juego no tenga que encargarse de ello. Algunos ejemplos de esto último son el motor de render, el de físicas o el de sonido.
 
+Actualmente los motores de videojuegos más usados en el mercado son Unity, Unreal y Godot.
+Aunque el artículo \cite{SGE} no se centre en un análisis del mercado en general, si contiene varias estadísticas sobre el uso de los principales motores de videojuegos en el mercado en 2023.
+Este artículo menciona que, de los juegos publicados en Steam ese año, un 60.04\% fueron hechos en Unity, un 16.42\% fueron hechos en Unreal y el 23.54\% restante fue hecho en motores propios de empresas (Source o CryEngine, por ejemplo).
+
+Debido a su gran integración con otras plataformas el motor elegido para este estudio ha sido Unity.
+
+Unity es un motor de videojuegos creado por Unity Technologies en 2005. A continuación se listan las principales herramientas que usa el motor:
+
+\begin{enumerate}
+    \item Motor gráfico: Propio de Unity basado mayoritariamente en OpenGL (para depende de qué plataformas puede usar otro, como Direct3D para Windows).
+    \item Motor físico: PhysX, creado por la empresa Nvidia Corporation.
+    \item Motor de audio: Propio de Unity.
+    \item Lenguaje de scripting: C\#.
+    \item Lenguaje de scripting de shaders: ShaderLab.
+\end{enumerate}
 
 \section{Modelos de \gls{ia}}
 
@@ -41,19 +72,4 @@ Tensroflow ofrece facilidades como Tensorflow Serving\footnote{Enlace a la pági
 \subsection{YDF vs Scikit-learn}
 
 Scikit-learn e YDF(\cite{GBBSP23}) comparten un punto en común: los árboles de decisión. Los árboles de decisión son modelos de aprendizaje automático no supervisado usados para tareas de clasificación y regresión. Estos modelos se basan en la idea de dividir distintos grupos a partir de distintos criterios dados. Estas divisiones se hacen en forma de árbol binario, dando así razón a su nombre.
-
-\section{Entornos virtuales}
-Como se puede ver en el artículo \cite{NOVE} se empezó a hablar en la década de los 90 de entornos virtuales y el \gls{metaverso} como nuevas formas de comunicarse con las personas.
-Estos entornos virtuales al principio eran muy sencillos, con pocas actividades que realizar y el chat escrito como única forma de comunicarse. Algún ejemplo de estos entornos virtuales eran el Second Life o el Habbo Hotel.
-
-Pero con la aparición de la \gls{vr} se hicieron populares entornos virtuales focalizados en esta tecnología, ya que ofrecía un grado de interacción superior a los anteriores mencionados.
-Junto a esto se empieza a hablar de ``inmersión'' y ``presencia'': dos términos que, a menudo se usan como sinónimos, pero son ligeramente distintos aunque están muy relacionados.
-Como lo define el artículo \cite{MRPI}, la presencia es la calidad experimental en entornos virtuales mientras que la inmersión está asociado con los aspectos técnicos de un sistema virtual que ayudan al usuario a potenciar la sensación de presencia.
-Estudios recientes como \cite{FPPS} demuestran como la presencia, tanto la nuestra propia como social, son potenciadores del apoyo social percibido, lo que se asocia con el bienestar de los usuarios; mientras que el estudio \cite{GVR} muestra que, aunque no haya mejoras performáticas entre jugar en entornos inmersivos (\gls{vr}) y no inmersivos (un ordenador), los jugadores encontraron más emocionantes y con mayor presencia los entornos interactivos.
-
-Con todo esto es natural que las empresas inviertan en tecnologías que aumenten la sensación de inmersión para lograr una mayor presencia.
-Empresas como Apple o Meta están apostando en la tecnología \gls{vr}, sacando recientemente las gafas Apple Vision Pro (2024) y Meta Quest 3 (2023); mejorando aspectos como la calidad de las cámaras, el sonido, el reconocimiento de gestos y su comodidad que pueden amplificar la sensación de inmersión cuando se utilizan.
-Además, Meta está centrada en la idea de \gls{metaverso} como un espacio digital en el que se puede socializar.
-
-Con la idea de mejorar la inmersión en entornos virtuales se ideó este proyecto en el que, mediante la captura de movimiento, se puede usar la comunicación no verbal para expresar ciertas acciones y el entorno sea capaz de reconocer lo que estamos haciendo. Todo esto pensado para que se pueda usar en entornos de \gls{vr} para llevar la inmersión al máximo
 
