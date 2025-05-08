@@ -44,11 +44,11 @@ Debido a su gran integración con otras plataformas el motor elegido para este e
 Unity es un motor de videojuegos creado por Unity Technologies en 2005. A continuación se listan las principales herramientas que usa el motor:
 
 \begin{enumerate}
-  \item Motor gráfico: Propio de Unity basado mayoritariamente en OpenGL (para depende de qué plataformas puede usar otro, como Direct3D para Windows).
-  \item Motor físico: PhysX, creado por la empresa Nvidia Corporation.
-  \item Motor de audio: Propio de Unity.
-  \item Lenguaje de scripting: C\#.
-  \item Lenguaje de scripting de shaders: ShaderLab.
+    \item Motor gráfico: Propio de Unity basado mayoritariamente en OpenGL (para depende de qué plataformas puede usar otro, como Direct3D para Windows).
+    \item Motor físico: PhysX, creado por la empresa Nvidia Corporation.
+    \item Motor de audio: Propio de Unity.
+    \item Lenguaje de scripting: C\#.
+    \item Lenguaje de scripting de shaders: ShaderLab.
 \end{enumerate}
 
 El modelo clásico de Unity se ha basado en la arquitectura Entidad-Componente (EC).
@@ -63,11 +63,11 @@ La inteligencia artifical ha sido un tópico de desarrollo e investigación en l
 
 \subsection{Tecnologías de \gls{ia}}
 
-En la actualidad, el mundo de la \gls{ia} está centrado en el desarrollo en python mediante el uso de librerías programadas en C++. Las librerías más comunes son Tensorflow\footnote{Enlace a la página principal de Tensorflow \url{https://www.tensorflow.org/}}, Pytorch\footnote{Enlace a la página principal de Pytorch \url{https://pytorch.org/}} y scikit-learn\footnote{Enlace a la página principal de Scikit-learn \url{https://scikit-learn.org/stable/}}.
+En la actualidad, el mundo de la \gls{ia} está centrado en el desarrollo en python mediante el uso de librerías programadas en C++. Las librerías más comunes son Tensorflow, Pytorch y scikit-learn.
 
 Tensorflow tiene un enfoque más orientado a la producción y despliegue de modelos de \gls{ia} a un nivel empresarial, pytorch es más usado en el ámbito académico y de investigación por su capacidad de rápido prototipado. Scikit-learn se usa más para enseñar los principios de la \gls{ia} y desarrollar modelos más ligeros y más tradicionales.
 
-Estas librerías se usan en conjunto con Numpy\footnote{Enlace a la página principal de Numpy: \url{https://numpy.org/}} y Pandas\footnote{Enlace a la página principal de Pandas: \url{https://pandas.pydata.org}} para conseguir unos cálculos más efectivos sobre la gran cantidad de datos que se necesitan en el ciclo de vida de un modelo de \gls{ia}.
+Estas librerías se usan en conjunto con Numpy(\cite{harris2020array}) y Pandas(\cite{reback2020pandas}, \cite{mckinney-proc-scipy-2010}) para conseguir unos cálculos más efectivos sobre la gran cantidad de datos que se necesitan en el ciclo de vida de un modelo de \gls{ia}.
 
 \subsection{Librerías de \gls{ia}}
 
@@ -83,3 +83,68 @@ PyTorch(\cite{Ansel_PyTorch_2_Faster_2024}) fue desarrolladapor Facebook AI Rese
 Pytorch permite la integración con otras librerías como NumPy, SciPy y Cython, lo que permite un desarrollo más rápido y sencillo de modelos de \gls{ia}.
 
 \subsubsection{Scikit-learn}
+Scikit-learn(\cite{scikit-learn}) es una librería de \gls{ia} desarrollada en Python que se centra en el aprendizaje automático. Esta librería se basa en NumPy, SciPy y matplotlib, lo que permite un desarrollo más sencillo de modelos de \gls{ia}. Scikit-learn es una librería más ligera y más tradicional que Tensorflow o Pytorch, por lo que es más común ver su uso en el ámbito académico y de investigación. Scikit-learn se centra más en el análisis de datos predictivo y también es de código abierto como las anteriores.
+
+\subsubsection{YDF}
+YDF (\cite{GBBSP23}) es una librería para entrenar, evaluar, interpretar y desplegar \gls{randomforest}, \glspl{gradientboosteddecisiontree}, \gls{cart} y \gls{isolationforest}. Esta librería esta intregrada con Tensorflow y keras, centra su desarrollo en la optimización de árboles de decisión y en hacer una \gls{api} concisa y moderna.
+
+\subsection{Modelos de reconocimiento de gestos y poses}
+
+
+Todos los modelos de los que se hablarán en esta sección son modelos que usan imágenes como entrada. No se ha encontrado modelo público que use datos de un traje de captura de movimiento como entrada.
+
+\subsubsection{YoLoV11}
+YoLoV11(\cite{Jocher_Ultralytics_YOLO_2023}) es un conjunto de modelos \gls{yolo}, entre los que se encuentra un modelo de detección de poses. Por defecto este modelo usa 17 puntos de referencia (presentados en la tabla \ref{tab:pose-yolo}) y usa imágenes de 640x640 píxeles como entrada. En la página del modelo de pose\footnote{Página de YOLOv11-pose: \url{https://docs.ultralytics.com/es/tasks/pose/}}, Ultralytics incluye los distintos modelos de pose y su rendimiento y requerimientos. Este modelo se ofrece preentrenado en distintos tamaños con la opción de re entrenarse usando un dataset con el formato especificado por Ultralytics\footnote{Página de especificación del formato del dataset: \url{https://docs.ultralytics.com/es/datasets/pose/}}
+\setlength\LTcapwidth{\linewidth}
+
+\begin{table}[H]
+    \centering
+    \caption{Puntos de referencia del modelo YOLOv11-pose}
+    \label{tab:pose-yolo}
+    \rowcolors{1}{white}{gray9}
+    \begin{tabular}{|l|}
+        \hline
+        Nariz             \\
+        \hline
+        % \rowcolor{gray9}
+        Ojo izquierdo     \\
+        \hline
+        Ojo derecho       \\
+        \hline
+        % \rowcolor{gray9}
+        Oreja izquierda   \\
+        \hline
+        Oreja derecha     \\
+        \hline
+        % \rowcolor{gray9}
+        Hombro izquierdo  \\
+        \hline
+        Hombro derecho    \\
+        \hline
+        % \rowcolor{gray9}
+        Codo izquierdo    \\
+        \hline
+        Codo derecho      \\
+        \hline
+        % \rowcolor{gray9}
+        Muñeca izquierda  \\
+        \hline
+        Muñeca derecha    \\
+        \hline
+        % \rowcolor{gray9}
+        Cadera izquierda  \\
+        \hline
+        Cadera derecha    \\
+        \hline
+        % \rowcolor{gray9}
+        Rodilla izquierda \\
+        \hline
+        Rodilla derecha   \\
+        \hline
+        % \rowcolor{gray9}
+        Tobillo izquierdo \\
+        \hline
+        Tobillo derecho   \\
+        \hline
+    \end{tabular}
+\end{table}
