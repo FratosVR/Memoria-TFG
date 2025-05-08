@@ -44,14 +44,14 @@ Debido a su gran integración con otras plataformas el motor elegido para este e
 Unity es un motor de videojuegos creado por Unity Technologies en 2005. A continuación se listan las principales herramientas que usa el motor:
 
 \begin{enumerate}
-    \item Motor gráfico: Propio de Unity basado mayoritariamente en OpenGL (para depende de qué plataformas puede usar otro, como Direct3D para Windows).
-    \item Motor físico: PhysX, creado por la empresa Nvidia Corporation.
-    \item Motor de audio: Propio de Unity.
-    \item Lenguaje de scripting: C\#.
-    \item Lenguaje de scripting de shaders: ShaderLab.
+  \item Motor gráfico: Propio de Unity basado mayoritariamente en OpenGL (para depende de qué plataformas puede usar otro, como Direct3D para Windows).
+  \item Motor físico: PhysX, creado por la empresa Nvidia Corporation.
+  \item Motor de audio: Propio de Unity.
+  \item Lenguaje de scripting: C\#.
+  \item Lenguaje de scripting de shaders: ShaderLab.
 \end{enumerate}
 
-El modelo clásico de Unity se ha basado en la arquitectura Entidad-Componente (EC). 
+El modelo clásico de Unity se ha basado en la arquitectura Entidad-Componente (EC).
 Esta arquitectura deja a todo lo que hay en el juego (las entidades, llamadas en Unity ''GameObjects'') como contenedores de componentes, que son los que le aportan funcionalidad a éstas.
 Este modelo supuso una mejoría ante la programación de videojuegos con objetos, ya que conseguía independizar comportamientos.
 
@@ -69,13 +69,17 @@ Tensorflow tiene un enfoque más orientado a la producción y despliegue de mode
 
 Estas librerías se usan en conjunto con Numpy\footnote{Enlace a la página principal de Numpy: \url{https://numpy.org/}} y Pandas\footnote{Enlace a la página principal de Pandas: \url{https://pandas.pydata.org}} para conseguir unos cálculos más efectivos sobre la gran cantidad de datos que se necesitan en el ciclo de vida de un modelo de \gls{ia}.
 
-\subsection{Tensorflow vs Pytorch}
+\subsection{Librerías de \gls{ia}}
 
-Las dos librerías poseen ventajas y desventajas que las hacen más o menos igual de viables para este proyecto. Mientras que Pytorch permite una rápida experimentación y prototipación, Tensorflow da facilidades a la hora de desplegar los modelos en formato \gls{api}.
+En el apartado anterior ya se han nombrado distintas librerías de \gls{ia} que se usan en la actualidad. En este apartado se van a describir las más relevantes para el desarrollo de este trabajo.
 
-Tensroflow ofrece facilidades como Tensorflow Serving\footnote{Enlace a la página de Tensorflow Serving \url{https://www.tensorflow.org/tfx/guide/serving}} y TensorBoard\footnote{Enlace a la página de Tensorboard \url{https://www.tensorflow.org/tensorboard}} para el despliegue y visualización de los modelos. Pytorch ofrece una librería llamada TorchServe\footnote{Enlace a la página de TorchServe \url{https://pytorch.org/serve/}} que permite el despliegue de modelos, pero no tiene una herramienta como Tensorboard para la visualización de los modelos.
+\subsubsection{Tensorflow}
 
-\subsection{YDF vs Scikit-learn}
+Tensorflow(\cite{tensorflow2015-whitepaper}) es una libería de \gls{ia} desarrollada y mantenida por el equipo de Google Brain desde 2015. Esta librería permite el desarrollo de modelos de \gls{ia} usando \glspl{cpu}, \glspl{gpu} y \glspl{tpu}. Tensorflow es una plataforma de código abierto que tiene un ecosistema de herramientas y librerías que permite el desarrollo e investigación de modelos de \gls{ia}.
+Tensorflow tiene un enfoque más orientado a la producción y despliegue de modelos de \gls{ia} a un nivel empresarial, por lo que es más común ver su uso en empresas que en el ámbito académico. Un ejemplo de este enfoque es la presencia de la herramienta Tensorflow Serving \cite{olston2017tensorflowservingflexiblehighperformanceml}, que permite el desplegado de modelos de Tensorflow (o compatibles con el ecosistema) de una forma sencilla.
 
-Scikit-learn e YDF(\cite{GBBSP23}) comparten un punto en común: los árboles de decisión. Los árboles de decisión son modelos de aprendizaje automático no supervisado usados para tareas de clasificación y regresión. Estos modelos se basan en la idea de dividir distintos grupos a partir de distintos criterios dados. Estas divisiones se hacen en forma de árbol binario, dando así razón a su nombre.
+\subsubsection{PyTorch}
+PyTorch(\cite{Ansel_PyTorch_2_Faster_2024}) fue desarrolladapor Facebook AI Research en 2026, se hizo de código abierto en 2017 y en 2022 se unió a la Linux Fundation. Esta librería se centra en la idea de que la búsqueda de usabilidad y velocidad son compatibles. Pytorch permite el desarrollo de modelos de \gls{ia} al igual que Tensorflow, pero su modelo de código y desarrollo ha hecho que se use más para prototipado rápido y desarrollo de proyectos dinámicos.
+Pytorch permite la integración con otras librerías como NumPy, SciPy y Cython, lo que permite un desarrollo más rápido y sencillo de modelos de \gls{ia}.
 
+\subsubsection{Scikit-learn}
