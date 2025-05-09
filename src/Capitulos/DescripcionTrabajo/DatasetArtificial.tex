@@ -49,17 +49,22 @@ Finalmente se descartó la idea de usar este tipo de archivos, ya que necesitan 
 
 \subsection{Carga mediante Asset Database}
 Finalmente se decidió usar Asset Database para la carga automática de las animaciones.
-Asset Database es una API de Unity que permiten trabajar con assets, siempre y cuando estén incluídos en el proyecto aunque no necesariamente cargados.
-Para suplir la condición de que estuviesen incluídos en el proyecto se hizo un script que descargaba las animaciones, separadas por carpetas cuyo nombre era el tipo de gesto, desde la base de datos de Kaggle hacia la carpeta ''Resources'' del proyecto y ejecutaba desde línea de comandos el editor del proyecto.
+Asset Database es una API de Unity que permiten trabajar con assets, siempre y cuando estén incluidos en el proyecto aunque no necesariamente cargados.
+Para suplir la condición de que estuviesen incluidos en el proyecto se hizo un script que descargaba las animaciones, separadas por carpetas cuyo nombre era el tipo de gesto, desde la base de datos de Kaggle hacia la carpeta ``Resources'' del proyecto y ejecutaba desde línea de comandos el editor del proyecto.
 
 Una vez las animaciones estuviesen descargadas en la carpeta de ``Resources'' del proyecto se busca iterativamente por la carpeta para cargar las animaciones y guardarse la relación entre el tipo de gesto y la animación.
 Una vez completado empieza la ejecución de las animaciones.
 
 Esta ejecución consiste en cargar la animación en la máquina de estados del \gls{Animator} gracias a un componente llamado ``Animator Override Controller'', que permite cambiar el clip de animación de una instancia del \gls{Animator} sin cambiar la lógica de su máquina de estados.
 Cuando empieza la animación se crea un \gls{csv} con el formato ``Animación\_Número de animación.csv'' y empieza su ejecución.
-Una vez finalizada la ejecución de una animación se cierra el \gls{csv} y se busca la siguiente animación.
+Una vez finalizada la ejecución de una animación se cierra el \gls{csv} y se busca la siguiente animación. Se puede ver un ejemplo de todo este proceso en un timelapse de la ejecución de la herramienta\footnote{Enlace al timelapse completo a x4 de tiempo \url{https://youtu.be/NOawMoaG98M}}, también se deja una captura del mismo para ver el funcionamiento de la herramienta en el editor de Unity.
 
-(PONER FOTO DE REMY BAILANDO)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/remy_bailon.png}
+    \caption{Frame de un \textit{timelapse} de la ejecución de la herramienta}
+    \label{fig:frame-timelapse}
+\end{figure}
 
 En la figura \ref{fig:MixamoDumper} se puede ver un diagrama de flujo del funcionamiento de esta herramienta.
 

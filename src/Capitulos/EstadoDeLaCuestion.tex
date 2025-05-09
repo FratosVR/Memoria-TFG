@@ -90,12 +90,10 @@ YDF (\cite{GBBSP23}) es una librería para entrenar, evaluar, interpretar y desp
 
 \subsection{Modelos de reconocimiento de gestos y poses}
 
-
-Todos los modelos de los que se hablarán en esta sección son modelos que usan imágenes como entrada. No se ha encontrado modelo público que use datos de un traje de captura de movimiento como entrada.
+Muchos modelos de \gls{ia} se han desarrollado para la detección de gestos y poses. Estos modelos pueden usar imágenes, videos, datos de sensores o esqueletos formados por puntos de referencia. En este apartado se van a destacar los más relevantes para el resto del trabajo.
 
 \subsubsection{YoLoV11}
 YoLoV11(\cite{Jocher_Ultralytics_YOLO_2023}) es un conjunto de modelos \gls{yolo}, entre los que se encuentra un modelo de detección de poses. Por defecto este modelo usa 17 puntos de referencia (presentados en la tabla \ref{tab:pose-yolo}) y usa imágenes de 640x640 píxeles como entrada. En la página del modelo de pose\footnote{Página de YOLOv11-pose: \url{https://docs.ultralytics.com/es/tasks/pose/}}, Ultralytics incluye los distintos modelos de pose y su rendimiento y requerimientos. Este modelo se ofrece preentrenado en distintos tamaños con la opción de re entrenarse usando un dataset con el formato especificado por Ultralytics\footnote{Página de especificación del formato del dataset: \url{https://docs.ultralytics.com/es/datasets/pose/}}
-\setlength\LTcapwidth{\linewidth}
 
 \begin{table}[H]
     \centering
@@ -148,3 +146,11 @@ YoLoV11(\cite{Jocher_Ultralytics_YOLO_2023}) es un conjunto de modelos \gls{yolo
         \hline
     \end{tabular}
 \end{table}
+
+\subsubsection{Modelos para la detección del balance de personas andando}
+
+En el artículo \cite{combining3dskeleton} se presenta una comparativa de modelos para la detección del balance de personas andando en distintos niveles de valance y con distintas restricciones con un traje usado. Este artículo presenta una generación de esqueletos en 3D a partir de una kinect y realiza una comparativa de distintos modelos tradicionales y neuronales para ver su efectividad. En las conclusiones podemos ver como, de los distintos modelos utilizados, el que mejor resultados da es un \gls{dcnn} que los investigadores proponen. Otros modelos de la comparativa incluyen el \gls{randomforest}, el \gls{svm}, \gls{lstm} y Naive Bayes en términos de modelos tradicionales. Otra comparativa se realiza con otros modelos basados en \glspl{cnn} como AlexNet, VGGNet y ResNet-18.
+
+\subsubsection{Otros modelos de detección de gestos y poses}
+
+En los últimos años se han desarrollado modelos generales de detección de gestos y poses. Estos modelos han tenido distintos enfoques, desde el uso de gafas de \gls{vr} para hacer detección de gestos simples con las manos para utilizarlos como método de entrada (Meta Quest 2 y 3 por ejemplo), a modelos de seguimiento de manos y distintos modelos de reconocimiento de Google con Gemini.
