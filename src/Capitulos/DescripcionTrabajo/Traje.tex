@@ -4,7 +4,7 @@
 El primer paso del proyecto consistía en configurar el traje y poder usarlo dentro de Unity.
 El traje usado, Preception Neuron 3, viene con:
 
-\begin{enumerate}  
+\begin{enumerate}
     \renewcommand{\theenumi}{\alph{enumi}}
     \item 17 sensores identificados con cada punto.
     \item 15 Bandas de velcro que se ponen en el cuerpo para colocar los sensores.
@@ -36,10 +36,10 @@ Una vez el traje conectado y calibrado ya puede capturar el movimiento en tiempo
 \label{subsec:NeuronMocapLive}
 Para poder usar la captura en Unity es necesario el plugin Neuron Mocap Live. \footnote{Enlace a la página de documentación de Neuron Mocap Live: \url{https://support.neuronmocap.com/hc/en-us/sections/206474008-UNITY-SDK}}
 
-Una vez metido el plugin en el proyecto se necesita un objeto vacío que contenga el componente ''Neuron Source Manager''.
+Una vez metido el plugin en el proyecto se necesita un objeto vacío que contenga el componente ``Neuron Source Manager''.
 Este componente se conecta a la aplicación mediante la dirección IP de la máquina que ejecuta Axis Studio y sockets TCP a un puerto que puedes configurar en la aplicación de Axis Studio. (TO DO: PONER CAPTURA DE LA CONFIGURACIÓN DE AXIS STUDIO).
 
-Posteriormente todos los objetos que vayan a usar la captura de movimiento deben ser hijos de este objeto vacío y tener el componente ''Neuron Transforms Instance''.
+Posteriormente todos los objetos que vayan a usar la captura de movimiento deben ser hijos de este objeto vacío y tener el componente ``Neuron Transforms Instance''.
 Este componente tiene una lista de Transforms que usa para mapear los huesos del traje con los del objeto de Unity.
 
 \subsection{Problemas encontrados con el traje}
@@ -51,7 +51,7 @@ A pesar de que esto causa que los dedos estén siempre en la misma posición con
 El segundo problema es la cantidad de ruido electromagnético presente en nuestro espacio de trabajo: la Facultad de Informática de la Universidad Complutense de Madrid.
 Este ruido causaba interferencias con el traje, haciendo que la señal con el ordenador fuese pobre constantemente y no se capturasen los movimientos correctamente.
 
-Para solventarlo se requirió de un cable (NO SÉ QUÉ CABLE) que se conectaba al ordenador en el que se enchufaba el receptor y se acercaba lo más posible al traje, ampliando la señal al máximo.
+Para solventarlo se requirió de un cable alargador de USB 2.0 de 10 metros que se conectaba al ordenador en el que se enchufaba el receptor y se acercaba lo más posible al traje, ampliando la señal al máximo.
 
 
 

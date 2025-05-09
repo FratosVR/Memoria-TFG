@@ -1,6 +1,6 @@
 \section{Busqueda de un dataset}
 \label{sec:busquedaDataset}
-Para poder entrenar modelos de \gls{ia} se requiere una gran cantidad de datos, en este caso de animaciones de los gestos escogidos que se han mencionado en la introducción. 
+Para poder entrenar modelos de \gls{ia} se requiere una gran cantidad de datos, en este caso de animaciones de los gestos escogidos que se han mencionado en la introducción.
 Además, estos datos tienen que estar en un formato en el que se pueda extraer la información de los huesos (posición y rotación) para que pueda ser usado por los modelos, y tenían que ser compatibles con los huesos del traje de captura de movimiento.
 
 \subsection{Dataset de la Universidad Carnegie Mellon}
@@ -12,7 +12,7 @@ Como se puede ver en \cite{MCUINFO} su traje contiene 41 puntos usados para la c
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/MCUTraje.jpg}
+    \includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/MCUTraje.jpg}
     \caption{Imágen del traje de captura de movimiento usado para la base de datos de la Universidad Carnegie Mellon, Fuente: https://mocap.cs.cmu.edu/info.php}
     \label{fig:MCUTraje}
 \end{figure}
@@ -32,7 +32,7 @@ Los formatos c3d, vsk y v son unos formatos en binario usados para objetos en 3D
 Por otro lado los archivos asf y amc son archivos en formato ASCII con la información de los huesos. Sin embargo la documentación aportada para poder usar la información es incompleta.
 
 El último motivo por el que no se ha usado este dataset es por la escasez de animaciones de los gestos buscados.
-Animaciones como ''correr'' sí están presentes (aunque no en abundancia), pero otras como ''pelear'' o ''saludar'' no.
+Animaciones como ``correr'' sí están presentes (aunque no en abundancia), pero otras como ``pelear'' o ``saludar'' no.
 
 Este último problema también ha estado presente en páginas específicas de bancos de datasets como Kaggle.
 
