@@ -114,7 +114,7 @@ De este ``mejor modelo'' se crea una matriz de confusión, se guarda el modelo e
 
 El modelo \gls{lstm} usado es un \textit{Sequential} de keras con una capa LSTM y una capa densa. La capa LSTM con los hiperparámetros antes descritos y la capa densa tiene tamaño el número de categorías de animaciones y una activación softmax. El modelo se compila utiliando el optimizador \textit{Adam}, la perdida se calcula con \textit{categorical\_crossentropy} y la métrica de evaluación es la \textit{accuracy}. Durante el proceso de entrenamiento se usan los \textit{callbacks} de \textit{EarlyStopping} para ahorrar recursos en entrenamientos que no parecen mejorar y los \textit{callbacks} de \textit{TensorBoard} para guardar los logs de entrenamiento y poder verlos en la interfaz de TensorBoard.
 
-Entre los modelos de \gls{lstm} entrenados, el del intervalo de 0.8 fue el que mejor rendimiento tuvo, con una precisión de 0.5912 en validación. A continuación se puede ver el esquema del modelo en la figura \ref{fig:lstm-0.8-ejemplo}, la matriz de confusión en la figura \ref{fig:lstm-0.8-matriz} y el gráfico de entrenamiento en la figura \ref{fig:lstm-0.8-grafico}. Podemos ver en la matriz de confusión que los gestos menos reconocidos son baile y saludo. Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosLSTM}.
+Entre los modelos de \gls{lstm} entrenados, el del intervalo de 0.8 fue el que mejor rendimiento tuvo, con una precisión de 0.5912 en validación. A continuación se puede ver el esquema del modelo en la figura \ref{fig:lstm-0.8-ejemplo}, la matriz de confusión en la figura \ref{fig:lstm-0.8-matriz-ejemplo} y el gráfico de entrenamiento en la figura \ref{fig:lstm-0.8-grafico-ejemplo}. Podemos ver en la matriz de confusión que los gestos menos reconocidos son baile y saludo. Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosLSTM}.
 
 \begin{figure}[h!]
     \centering
@@ -126,18 +126,141 @@ Entre los modelos de \gls{lstm} entrenados, el del intervalo de 0.8 fue el que m
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/CM_best-lstm0.8.png}
     \caption{Matriz de confusión del modelo LSTM}
-    \label{fig:lstm-0.8-matriz}
+    \label{fig:lstm-0.8-matriz-ejemplo}
 \end{figure}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/tb-lstm-0.8.png}
     \caption{Gráfico de entrenamiento del modelo LSTM}
-    \label{fig:lstm-0.8-grafico}
+    \label{fig:lstm-0.8-grafico-ejemplo}
 \end{figure}
 
 \subsubsection{\gls{cnn}}
 
 
+El modelo de \gls{cnn} se entrenó de una manera muy similar al de \gls{lstm}. En el uml de la figura \ref{fig:cnn-estructura} se puede ver la estructura de la clase \textit{CNNTrainer}, la cual es muy similar a la de \textit{LSTMTrainer}. La diferencia está en los hiperparámetros buscados. Estos son:
+\begin{itemize}
+    \item \textbf{activation}: Función de activación de la capa oculta.
+    \item \textbf{conv\_filters}: Número de filtros de la capa convolucional.
+    \item \textbf{dense\_units}: Número de neuronas de la capa densa.
+    \item \textbf{dropout}: Porcentaje de \textit{dropout} de la capa oculta.
+    \item \textbf{kernel\_size}: Tamaño del kernel de la capa convolucional.
+    \item \textbf{pool\_size}: Tamaño del \textit{pooling} de la capa convolucional.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/classes_CNNTrainer.png}
+    \caption{Estructura de la clase CNNTrainer}
+    \label{fig:cnn-estructura}
+\end{figure}
+
+El método de entrenamiento es el mismo que el descrito en el apartado anterior, haciendo uso de keras-tuner para encontrar los mejores hiperparámetros. En el caso de este modelo, el mejor resultado se consigue con el intervalo de 1 segundo, haciendo este modelo más un reconocedor de poses que de gestos, con una precisión de 0.56002 en validación. La precisión en validación fue de 0.6342, lo que lo convierte en el mejor modelo entrenado. En la figura \ref{fig:cnn-1.0-ejemplo} se puede ver el esquema del modelo, en la figura \ref{fig:cnn-1.0-matriz-ejemplo} la matriz de confusión y en la figura \ref{fig:cnn-1.0-grafico-ejemplo} el gráfico de entrenamiento. En este caso podemos ver que los gestos que peor detecta son baile y saludo (siendo saludo muy confundido con pelea). Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosCNN}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/best-cnn1.0.png}
+    \caption{Esquema del modelo CNN}
+    \label{fig:cnn-1.0-ejemplo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Imagenes/Bitmap/CM_best-cnn1.0.png}
+    \caption{Matriz de confusión del modelo CNN}
+    \label{fig:cnn-1.0-matriz-ejemplo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/tb-cnn-1.0.png}
+    \caption{Gráfico de entrenamiento del modelo CNN}
+    \label{fig:cnn-1.0-grafico-ejemplo}
+\end{figure}
+
 \subsubsection{\gls{rnn}}
+
+Con el \gls{rnn} se sigue la misma base que para los dos modelos anteriores. La clase \textit{RNNTrainer} (estructura en la figura \ref{fig:rnn-estructura} )es muy similar a las anteriores, cambiando una vez más los hiperparámetros a buscar. En este caso son:
+
+\begin{itemize}
+    \item \textbf{activation}: Función de activación de la capa oculta.
+    \item \textbf{activity regularizer}: Regularizador de la capa oculta.
+    \item \textbf{bias constraint}: Restricción del \textit{bias} de la capa oculta.
+    \item \textbf{bias initializer}: Inicializador del \textit{bias} de la capa oculta.
+    \item \textbf{bias regularizer}: Regularizador del \textit{bias} de la capa oculta.
+    \item \textbf{dropout}: Porcentaje de \textit{dropout} de la capa oculta.
+    \item \textbf{kernel constraint}: Restricción del kernel de la capa oculta.
+    \item \textbf{kernel initializer}: Inicializador del kernel de la capa oculta.
+    \item \textbf{kernel regularizer}: Regularizador del kernel de la capa oculta.
+    \item \textbf{recurrent constraint}: Restricción de la capa oculta.
+    \item \textbf{recurrent dropout}: Porcentaje de \textit{dropout} de la capa oculta.
+    \item \textbf{recurrent initializer}: Inicializador de la capa oculta.
+    \item \textbf{recurrent regularizer}: Regularizador de la capa oculta.
+    \item \textbf{unroll}: Si se usa el \textit{unroll} de la capa oculta.
+    \item \textbf{use bias}: Si se usa el \textit{bias} de la capa oculta.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/classes_RNNTrainer.png}
+    \caption{Estructura de la clase RNNTrainer}
+    \label{fig:rnn-estructura}
+\end{figure}
+
+A pesar de ser el modelo con mayor busqueda de hiperparámetros, está en una reñida competición con el modelo \gls{cnn} para ver cual de los dos detecta peor los gestos. Su mejor intervalo ha sido el de 0.8 segundos con una precisión de 0.47865 en validación. En la figura \ref{fig:rnn-0.8-ejemplo} se puede ver el esquema del modelo, en la figura \ref{fig:rnn-0.8-matriz-ejemplo} la matriz de confusión y en la figura \ref{fig:rnn-0.8-grafico-ejemplo} el gráfico de entrenamiento. En este caso podemos ver que los gestos que peor detecta son baile y saludo (siendo pelea muy confundida con saludo). Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosRNN}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/best-rnn0.8.png}
+    \caption{Esquema del modelo RNN}
+    \label{fig:rnn-0.8-ejemplo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Imagenes/Bitmap/CM_best-rnn0.8.png}
+    \caption{Matriz de confusión del modelo RNN}
+    \label{fig:rnn-0.8-matriz-ejemplo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/tb-rnn-0.8.png}
+    \caption{Gráfico de entrenamiento del modelo RNN}
+    \label{fig:rnn-0.8-grafico-ejemplo}
+\end{figure}
+
 \subsubsection{\gls{randomforest}}
+
+El entrenador del \gls{randomforest} es el más sencillo y el más distinto de todos. Este modelo no es una red neuronal, sino un modelo clásico de clasificación. La clase \textit{RandomForestTrainer} (estructura en la figura \ref{fig:rf-estructura}) sigue utilizando la función train\_with\_hparams como las anteriores aún no habiendo hparams como tal, haciendo esto se consigue mantener la igualdad de todas las clases de cara a la interfaz de gradio.
+
+Este modelo no usa tensorflow como tal, dado que YDF es un desarrollo que deja atrás el uso de TensorFlow Decision Forest para implementar algoritmos más eficientes tanto en entrenamiento como en inferencia. A pesar de ser un desarrollo paralelo, el equipo de YDF decide hacer el modelo compatible con Tensorflow para poder integrarlo en un mayor ecosistema. Estos datos de mayor eficiencia se pueden comprobar en el estudio \cite{GBBSP23}.
+
+A diferencia de los modelos anteriores, este modelo usa DataFrames de pandas para el entrenamiento y la predicción en vez de tensores. En este entrenamiento usamos \textit{RandomSearchTuner} para buscar la mejor combinación de número de árboles, profundidad máxima y mínimo de ejemplos.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/classes_RandomForestTrainer.png}
+    \caption{Estructura de la clase RFTrainer}
+    \label{fig:rf-estructura}
+\end{figure}
+
+Por desgracia, este modelo no deja una constancia tan rigurosa como los anteriores dado que no usa TensorBoard ni tiene un equivalente. A pesar de esto, este es el modelo con mayor rendimiento de lejos. Todos los intervalos tienen un rendimiento más o menos equivalente, ganando el de 0.8 segundos por muy poco.
+
+En la figura \ref{fig:rf-0.8-matriz-ejemplo} se puede ver la matriz de confusión del modelo y en el apendice \ref{appendix:resultadosRF} se pueden ver los resultados de todos los intervalos. En este caso podemos ver que los gestos que peor detecta son pelea y saludo. La precisión en validación fue de 0.85936, lo que lo convierte en el mejor modelo entrenado.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Imagenes/Bitmap/CM_best_rf_0.8.png}
+    \caption{Matriz de confusión del modelo RandomForest}
+    \label{fig:rf-0.8-matriz-ejemplo}
+\end{figure}
+
+Este modelo finalmente es exportable a TensorFlow, siendo esto muy útil para su desplegado y compatibilización con otras herramientas
+
 \subsection{Hardware y sus suplicios}
+
+HABLAR DE LA FALTA DE TIEMPO POR CULPA DE TENER POCOS RECURSOS
+
+\subsection{TensorFlow Serving}
+
+HABLAR  DE LO GUAPO QUE ESTA TF SERVING CON LA COMPATIBILIDAD CON YDF
