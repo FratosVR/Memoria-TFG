@@ -255,12 +255,50 @@ En la figura \ref{fig:rf-0.8-matriz-ejemplo} se puede ver la matriz de confusió
     \label{fig:rf-0.8-matriz-ejemplo}
 \end{figure}
 
-Este modelo finalmente es exportable a TensorFlow, siendo esto muy útil para su desplegado y compatibilización con otras herramientas
-
-\subsection{Hardware y sus suplicios}
-
-HABLAR DE LA FALTA DE TIEMPO POR CULPA DE TENER POCOS RECURSOS
+Este modelo finalmente es exportable a TensorFlow, siendo esto muy útil para su desplegado y compatibilización con otras herramientas. Dentro del repo, en la carpeta de ``notebooks'' se puede ver un resumen de las características más decisivas del modelo y su importancia en la diferenciación de dos gestos cuales sean.
 
 \subsection{TensorFlow Serving}
 
-HABLAR  DE LO GUAPO QUE ESTA TF SERVING CON LA COMPATIBILIDAD CON YDF
+Que todos los modelos sean exportables a TensorFlow permite el uso de TensorFlow Serving (\cite{olston2017tensorflowservingflexiblehighperformanceml}) para desplegar modelos. Serving nos proporciona una interfaz sencilla mediante \gls{API REST} para re entrenar los modelos y poder hacer inferencia sobre ellos desde cualquier máquina conectada a la red.
+
+Este método de desplegado es especialmente útil a la hora de integrar los modelos con otras tecnologías sin necesidad de hace traducciones a otros lenguajes o formatos. El servidor se despliega usando docker y cogiendo el modelo de la última \textit{release} del repositorio. Para hacer una inferencia solo hay que hacer una petición \textit{POST} con el formato visto en la figura \ref{fig:ejemplo-petición} y el servidor devuelve la respuesta vista en la figura \ref{fig:ejemplo-respuesta}.
+
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}[style=custombash]
+curl <model_server>/v1/models/<model_name>:predict \
+-X POST \
+-d '{"instances": [{"input": [
+    "feature_0":0.24,
+    "feature_1":0.12,
+    ... 
+    "feature_599":0.56
+]}]}'
+    \end{lstlisting}
+    \caption{Ejemplo de petición a TensorFlow Serving}
+    \label{fig:ejemplo-petición}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{lstlisting}[style=custombash]
+{
+    "prediction": {
+        "scores": [0.981395662, 0.0186043456, 0.1920000, 0.0112349, 0.0001234, 0.0001234],
+         "classes": ["dance", "fight", "greeting", "point", "run", "sit"]
+    }
+}
+    \end{lstlisting}
+    \caption{Ejemplo de respuesta de TensorFlow Serving}
+    \label{fig:ejemplo-respuesta}
+\end{figure}
+
+En el repositorio se pueden encontrar dos scripts, uno para windows y otro para linux, que permiten desplegar el servidor de manera automática siempre que docker ya esté instalado en el sistema.
+
+\subsection{Hardware, complejidad de datos y otras limitaciones}
+
+Este estudio ha estado muy limitado por el hardware disponible para el mismo. El equipo usado para el modelo tenía gráficas de consumidor de hace más de 5 años, haciendo que los modelos con redes neuronales tardaran bastante en entrenarse. Esto no fue un problema en el caso del \gls{randomforest}, ya que se entrena en \gls{cpu}.
+
+Estas limitaciones de hardware también han afectado a la visión de los modelos a desarrollar, ya que en un principio se pensó en hacer modelos lo más simples posibles para poder utilizarlos incluso en equipos más limitados (gafas de \gls{vr} o equipos más antiguos).
+
+Así mismo, la falta de espacios y de tiempo han resultado en que, junto a la falta de datasets ya formados, el número de datos fuera limitado para lo que requeriría el entrenamiento de redes neuronales.
