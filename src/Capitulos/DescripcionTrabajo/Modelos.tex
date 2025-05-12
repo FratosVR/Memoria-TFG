@@ -268,12 +268,12 @@ Este método de desplegado es especialmente útil a la hora de integrar los mode
     \begin{lstlisting}[style=custombash]
 curl <model_server>/v1/models/<model_name>:predict \
 -X POST \
--d '{"instances": [{"input": [
+-d '{"instances": [{
     "feature_0":0.24,
     "feature_1":0.12,
     ... 
     "feature_599":0.56
-]}]}'
+}]}'
     \end{lstlisting}
     \caption{Ejemplo de petición a TensorFlow Serving}
     \label{fig:ejemplo-petición}
