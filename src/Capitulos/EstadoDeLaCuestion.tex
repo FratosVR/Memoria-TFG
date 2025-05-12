@@ -29,7 +29,35 @@ Los usuarios de esta aplicación han buscado distintas formas de conseguir una m
 
 \section{Captura de movimiento}
 
-La captura de movimiento es una técnica que permite digitalizar el movimiento de una persona. Esta técnica se usa sobre todo en el ámbito de la animación, el cine y los videojuegos sobre todo. HABLAR DE  TRAJES DE CAPTURA DE MOVIMIENTO CON LUCES, DE TRAJES COMO EL PN3 Y DE LOS FURROS CON ONDAS CEREBRALES.
+La captura de movimiento es una técnica que permite digitalizar el movimiento de una persona. Esta técnica se usa sobre todo en el ámbito de la animación, el cine y los videojuegos.
+Para lograr esto se han desarrollado diferentes tipos de tecnologías.
+
+Los sistemas basados en cámaras 3D utilizan los \gls{IRs} para calcular la profundidad. Según el artículo \cite{KINECT} la Kinect (Microsoft, 2010) utilizaba esta tecnología para ello.
+Consiste en un proyector de \gls{IRs} cuyos rayos atraviesan una rejilla de difracción, convirtiéndose en un conjunto de puntos que, como se sabe la geometría relativa entre este proyector y una cámara de \gls{IRs} que venía incorporada, se podía triangular la posición de un objeto haciendo coincidir un punto observado con uno de los puntos del proyector.
+
+Otra tecnología usada es mediante sensores inerciales.
+Según se puede ver en \cite{XSENS}, el traje Xsens MVN es un ejemplo de ello.
+No utiliza cámaras o marcadores si no la combinación de giroscopios, acelerómetros y magnetómetros.
+Con los datos recibidos de estos sensores se puede estimar la rotación de los diferentes puntos mientras que la posición se puede estimar mediante supuestos de una cadena cinemática.
+En la figura \ref{fig:XSensTraje} se puede ver el traje visto desde la espalda.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Imagenes/Bitmap/XSens.png}
+    \caption{Imágen del traje de captura de movimiento XSens, Fuente: \url{https://www.researchgate.net/figure/The-Xsens-MVN-full-body-motion-capture-suit-Picture-source-htttp-wwwxsenscom_fig1_233926874}}
+    \label{fig:XSensTraje}
+\end{figure}
+
+La tecnología que se ha usado en este trabajo consiste en la captura mediante sensores electromagnéticos.
+El artículo \cite{EMS} explica que la generación de valores en un campo electromagnético tridimensional es suficiente para determinar la posición y rotación de un objeto emitidor frente a un sensor.
+Para ello se aplican transformaciones lineales a la excitación de la fuente y los vectores recibidos por el receptor para percibir pequeños cambios en los valores a determinar, los cuales se separan mediante combinaciones lineales de los vectores de salida del sensor y se utilizan para actualizar las coordenadas previas.
+
+En esta última tecnología se basa el traje Perception Neuron 3, el traje de captura de movimiento utilizado en este trabajo.
+Este traje fue creado por Noitom, empresa fundada en el 2012 enfocada en el desarrollo de tecnología de captación de movimiento.
+El traje previamente mencionado se encuentra dentro de la serie de trajes ''Perception Neuron'', los cuales son bandas de velcro a las que se pueden acoplar sensores electromagnéticos.
+
+
+HABLAR DE  TRAJES DE CAPTURA DE MOVIMIENTO CON LUCES, DE TRAJES COMO EL PN3 Y DE LOS FURROS CON ONDAS CEREBRALES.
 
 \section{Motores de videojuegos}
 Un motor de videojuegos es un software que proporciona herramientas para desarrollar y ejecutar un videojuego.
