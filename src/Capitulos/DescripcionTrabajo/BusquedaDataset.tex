@@ -38,8 +38,17 @@ Este último problema también ha estado presente en páginas específicas de ba
 
 \subsection{Kaggle}
 
-TO DO: HABLAR DE LA ESCASEZ DE DATASET DE ANIMACIONES EN KAGGLE
+Kaggle es una página web dedicada a la ciencia de datos y el aprendizaje automático y la \gls{ia}. En Kaggle se pueden encontrar datasets, modelos, código y competiciones de \gls{ia}. Kaggle tiene una gran comunidad de usuarios y una gran selección de datasets para distintas finalidades.
 
-TO DO: HABLAR DE POR QUÉ DESCARTAMOS IMÁGENES Y NOS CENTRAMOS MÁS EN ESQUELETOS
+En un primer momento, se pensó en usar datasets de imágenes/vídeo, así que se buscó conjuntos de datos de este formato. La búsqueda no obtuvo los resultados esperados, ya que no se encontró datos de poses generales como las requeridas, y en concreto no se consiguió mucha cantidad de datos.
+
+Tras analizar las desventajas de usar imágenes y videos, se pensó que era mejor usar un conjunto de datos basado en animaciones (o coordenadas de las mismas). Algunas de estas desventajas consideradas fueron:
+\begin{itemize}
+    \item Complejidad de renderizado: las imagenes y/o vídeos requerirían de renderizar una cámara externa dentro del motor para capturar la presencia del usuario. Esto ya requeriría más potencia de computo, sin contar lo que requeriría el modelo.
+    \item Transferencias de datos más grandes: al plantear un servidor para el modelo, se pensó en el tamaño de las imágenes que habría que mandar para hacer las inferencias. En el caso de tener una red de velocidad limitada sería mejor mandar los puntos concretos del traje que mandar imágenes completas. Las imágenes, incluso al ser de baja calidad, requerirían una cantidad muy grande de píxeles para hacer el modelo del usuario fácilmente reconocible.
+    \item Perdida de contexto: el traje de captura de movimiento te permite obtener datos tridimensionales de cada punto por defecto, sin necesidad de tener que recrear un esqueleto 3D con capas extra en el modelo.
+\end{itemize}
+
+Tras este cambio de enfoque, se buscó datasets de animaciones y modelos 3D. Resultó ser una búsqueda incluso peor que la anterior, ya que por la limitación de gente que tiene acceso a trajes de captura de movimiento, no había datasets públicos en dataset con este tipo de datos.
 
 Ya que no se encontró un gran dataset que cumpliese con nuestros requerimientos se tomó la decisión de buscar en un banco de animaciones los gestos requeridos y transformar esas animaciones en un formato que puediesen ser procesados.
