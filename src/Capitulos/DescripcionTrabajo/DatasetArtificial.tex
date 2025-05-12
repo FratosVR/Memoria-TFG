@@ -19,7 +19,7 @@ Al empezar a usarse la herramienta se detectó que al empezar a bajar animacione
     \label{fig:mixamo-downloader}
 \end{figure}
 
-Una vez realizados los cambios, se descargaron las animaciones disponibles en Mixamo para los gestos que se querían usar.
+Una vez realizados los cambios, se descargaron las animaciones disponibles en Mixamo para los gestos que se querían usar. El resultado de estas descargas se puede ver en el dataset \cite{raw-mixamo-animations}.
 
 Las animaciones descargadas tienen un formato \gls{FBX}, por lo que era necesario pasarlas a un formato que puedan usar los modelos de \gls{ia}.
 Para ello se decidió pasar la información relevante de los huesos en la toda la animación (su posición y rotación en cada frame) a un archivo CSV, donde cada columna iba a ser esta información y cada fila un frame de la animación. En la tabla \ref{tab:cabecera-csv-completa} se puede ver la cabecera para los CSV. En la siguiente tabla (\ref{tab:cabecera-csv-incompleta}) se puede ver un ejemplo de los valores que se guardan de un punto concreto del traje.
