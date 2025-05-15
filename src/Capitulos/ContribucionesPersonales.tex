@@ -35,6 +35,41 @@ Una vez se acabaron los entrenamientos y se decidió el mejor modelo, Alejandro 
 
 Tras finalizar todo esto, Alejandro se dedicó a la redacción de este documento junto a su compañero, garantizando así cohesión durante todo el texto y ayuda con \LaTeX en los momentos necesarios. También se dedicó a hacer las gráficas explicativas de los modelos y los datos demográficos para asegurar un entendimiento más sencillo de todos los resultados.
 
-\section*{Estudiante 2}
-Al menos dos páginas con las contribuciones del estudiante 2. En caso de que haya más estudiantes, copia y pega una de estas secciones.
+\section*{Pablo Sánchez Martín}
+Pablo Sánchez Martín, estudiante del Grado de Desarrollo de Videojuegos, se ha involucrado en el proyecto desde el momento en el que salió la idea manteniendo una comunicación constante con su compañero y tutores. 
 
+Desde el año 2023 mantuvo contacto con uno de los tutores, Alejandro Romero, para hacer un proyecto con un traje de captura de movimiento.
+Tras varias reuniones debatiendo lo que podría ser un trabajo interesante los dos decidieron el estudio actual.
+Para ello Pablo contactó al otro tutor del proyecto, Ismael Sagredo, e involucró a su compañero Alejandro Barrachina. 
+
+Durante el desarrollo estas son las tareas que ha realizado:
+
+La primera tarea que tuvo que realizar junto a su compañero Alejandro era establecer qué gestos se querían detectar, qué modelos de \gls{ia} se iban a utilizar y si se iba a detectar el movimiento de los dedos mediante las gafas de \gls{vr} (handtracking).
+Finalmente los dos acordaron los cinco gestos en los que se basa el proyecto, los cuatro modelos con los que se hace la comparación y la decisión de no tener el handtracking por posibles problemas a la hora de no estar viendo las manos en todo momento.
+
+Lo siguiente que hizo fue investigar el funcionamiento del traje de captura de movimiento junto al software necesario, tanto Axis Studio como el plugin de Unity.
+Para ello estuvo investigando las distintas funcionalidades dentro de un proyecto de Axis Studio que podría interesar para el estudio y se descargó un proyecto cedido por el tutor Alejandro Romero en el que se usaba el plugin para poder analizarlo y saber cómo usarlo.
+
+Una vez entendió el funcionamiento del software necesario para el funcionamiento del traje empezó a buscar distintos datasets de animaciones para entrenar los modelos junto a su compañero.
+Al ver la escasez de estos datasets se optó por sacaralos de un banco de animaciones, por lo que empezó el desarrollo de la herramienta Mixamo Dumper.
+
+En un primer momento investigó sobre el uso de los Assets Bundles de Unity para la carga automática de recursos externos a la aplicación, pero al final decidió no usar ese método.
+Finalmente para esa aplicación decidió usar el Asset Database de Unity, por lo que se dedicó a la investigación de esta \gls{api} y finalmente a la implementación de la herramienta.
+Una vez funcionaba la implementación de la carga de animaciones en tiempo de ejecución investigó como poder ejecutar todas estas animaciones seguidas en tiempo de ejecución, hasta que finalmente encontró el componente ''Animator Override Controller'', lo que le permitió cumplir el objetivo de la herramienta.
+
+Debido a los pocos datos encontrados en Mixamo se decidió grabar a usuarios con el traje de captura de movimiento, por lo que hizo en Unity una herramienta sencilla para crear \glspl{csv} en tiempo real con el traje de captura de movimiento.
+
+Para las pruebas con usuarios se encargó de la comunicación con sus tutores y personal de la Facultad de Informática para conseguir un lugar en el que poder grabar.
+Con el fin de capar usuarios junto a su compañero hizo carteles y ayudó en la campaña en redes sociales y difusión por el resto de facultades de Ciudad Universitaria.
+
+En la prueba explicó junto a su compañero a todos los usuarios el propósito de las pruebas, les ayudó a ponerse el traje y a explicarles el proceso de calibración. 
+También le fue dando indicaciones a los usuarios sobre los gestos a realizar, grabó las animaciones y verificó que no hubiese ningún problema con estas.
+Adicionalmente se encargó junto a su compañero de buscar nuevos usuarios para cubrir huecos que habían quedado libres con el fin de maximizar el número de datos recogidos y gestionar a las personas que solapaban con otros usuarios.
+
+Una vez recogidos los datos investigó diferentes formas de conectarse con el servidor que hostee el modelo elegido.
+Investigó el uso de ''Unity NetCode'', un paquete propio de Unity para la comunicación en red en videojuegos y también investigó la posibilidad de realizar la comunicación mediante las llamadas nativas de C\#.
+Finalmente se decidió usar la arquitectura \gls{API REST}, por lo que investigó su funcionamiento mediante el paquete nativo ''UnityWebRequest'' y empezó la aplicación final con la implementación de ésta en Unity.
+
+Una vez estaba hecha la comunicación con el servidor diseñó e implementó una aplicación final con soporte para las gafas de \gls{vr} y el traje de captura de movimiento en el que se conectase con el servidor y se pueda ver el resultado del modelo elegido en tiempo real y como un \gls{npc} reacciona a los gestos predichos por éste.
+
+Finalmente ha contribuído a la redacción de este documento junto a su compañero, así como la constante comunicación con los tutores para comprobar que el formato de éste era adecuado y a la realización de distintos diagramas para que las herramientas creadas durante el proceso del proyecto sean más sencillas de entender.
