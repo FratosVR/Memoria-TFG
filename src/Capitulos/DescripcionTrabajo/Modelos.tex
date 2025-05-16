@@ -283,10 +283,10 @@ curl <model_server>/v1/models/<model_name>:predict \
     \centering
     \begin{lstlisting}[style=custombash]
 {
-    "prediction": {
+    "predictions": [{
         "scores": [0.981395662, 0.0186043456, 0.1920000, 0.0112349, 0.0001234, 0.0001234],
          "classes": ["dance", "fight", "greeting", "point", "run", "sit"]
-    }
+    }]
 }
     \end{lstlisting}
     \caption{Ejemplo de respuesta de TensorFlow Serving}
