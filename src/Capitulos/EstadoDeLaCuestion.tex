@@ -30,12 +30,18 @@ Los usuarios de esta aplicación han buscado distintas formas de conseguir una m
 \section{Captura de movimiento}
 
 La captura de movimiento es una técnica que permite digitalizar el movimiento de una persona. Esta técnica se usa sobre todo en el ámbito de la animación, el cine y los videojuegos.
-Para lograr esto se han desarrollado diferentes tipos de tecnologías.
+Para lograr esto se han desarrollado diferentes tipos de tecnologías: óptica, mecánica y magnética.
 
-Los sistemas basados en cámaras 3D utilizan los \gls{IRs} para calcular la profundidad. Según el artículo \cite{KINECT} la Kinect (Microsoft, 2010) utilizaba esta tecnología para ello.
+La captura de movimiento óptica consiste en el uso de cámaras para la captura.
+Según el artículo \cite{OPTICAL} esta captura se puede dividir en monocular o multivista dependiendo del número de cámaras y según si utilizan marcadores o no.
+En el mismo artículo explica el funcionamiento de la captura óptica multivista con el uso de marcdores, el cual se utiliza en gran medida en la industria audiovisual.
+Este tipo de captura óptica necesita al menos de un conjunto de cámaras sincronizadas (dos o más), un traje con marcadores en puntos significativos (articulaciones sobretodo) y un sistema de adquisición de varios vídeos simultáneos.
+La reconstrucción del movimiento se basa en la sincronía de las cámaras y la capacidad de detección de los mismos marcadores desde diferentes puntos de vista se puede reconstruir en 3D los marcadores mediante la triangulación de los distintos puntos de vista.
+
+Un ejemplo de la captura de movimiento óptica monocular y sin marcadores son los sistemas basados en cámaras 3D que utilizan los \gls{IRs} para calcular la profundidad. Según el artículo \cite{KINECT} la Kinect (Microsoft, 2010) utilizaba esta tecnología para ello.
 Consiste en un proyector de \gls{IRs} cuyos rayos atraviesan una rejilla de difracción, convirtiéndose en un conjunto de puntos que, como se sabe la geometría relativa entre este proyector y una cámara de \gls{IRs} que venía incorporada, se podía triangular la posición de un objeto haciendo coincidir un punto observado con uno de los puntos del proyector.
 
-Otra tecnología usada es mediante sensores inerciales.
+La captura de movimeinto mecánica se consigue mediante sensores inerciales.
 Según se puede ver en \cite{XSENS}, el traje Xsens MVN es un ejemplo de ello.
 No utiliza cámaras o marcadores si no la combinación de giroscopios, acelerómetros y magnetómetros.
 Con los datos recibidos de estos sensores se puede estimar la rotación de los diferentes puntos mientras que la posición se puede estimar mediante supuestos de una cadena cinemática.
@@ -48,11 +54,12 @@ En la figura \ref{fig:XSensTraje} se puede ver el traje visto desde la espalda.
     \label{fig:XSensTraje}
 \end{figure}
 
-La tecnología que se ha usado en este trabajo consiste en la captura mediante sensores electromagnéticos.
-El artículo \cite{EMS} explica que la generación de valores en un campo electromagnético tridimensional es suficiente para determinar la posición y rotación de un objeto emitidor frente a un sensor.
+
+Finalmente la captura magnética se consiste mediante sensores electromagnéticos.
+El artículo \cite{EMS} explica que la generación de valores en un campo electromagnético tridimensional es suficiente para determinar la posición y rotación de un objeto emisor frente a un sensor.
 Para ello se aplican transformaciones lineales a la excitación de la fuente y los vectores recibidos por el receptor para percibir pequeños cambios en los valores a determinar, los cuales se separan mediante combinaciones lineales de los vectores de salida del sensor y se utilizan para actualizar las coordenadas previas.
 
-En esta última tecnología se basa el traje Perception Neuron 3, el traje de captura de movimiento utilizado en este trabajo.
+En esta última tecnología se basa el traje Perception Neuron 3.
 Este traje fue creado por Noitom, empresa fundada en el 2012 enfocada en el desarrollo de tecnología de captación de movimiento.
 El traje previamente mencionado se encuentra dentro de la serie de trajes ''Perception Neuron'', los cuales son bandas de velcro a las que se pueden acoplar sensores electromagnéticos.
 
@@ -63,8 +70,6 @@ Estos motores están compuestos a su vez de otros motores más específicos que 
 Actualmente los motores de videojuegos más usados en el mercado son Unity, Unreal y Godot.
 Aunque el artículo \cite{SGE} no se centre en un análisis del mercado en general, si contiene varias estadísticas sobre el uso de los principales motores de videojuegos en el mercado en 2023.
 Este artículo menciona que, de los juegos publicados en Steam ese año, un 60.04\% fueron hechos en Unity, un 16.42\% fueron hechos en Unreal y el 23.54\% restante fue hecho en motores propios de empresas (Source o CryEngine, por ejemplo).
-
-Debido a su gran integración con otras plataformas el motor elegido para este estudio ha sido Unity.
 
 Unity es un motor de videojuegos creado por Unity Technologies en 2005. A continuación se listan las principales herramientas que usa el motor:
 
@@ -81,6 +86,8 @@ Esta arquitectura deja a todo lo que hay en el juego (las entidades, llamadas en
 Este modelo supuso una mejoría ante la programación de videojuegos con objetos, ya que conseguía independizar comportamientos.
 
 Desde 2022 mediante el paquete Unity DOTS (Data-Oriented Technology Stack) \footnote{Enlace a la documentación del paquete DOTS: \url{https://docs.unity3d.com/Packages/com.unity.entities@1.3/manual/index.html}} se pueden crear videojuegos siguiendo la arquitectura Entidad-Componente-Sistema (ECS).
+Esta arquitectura consiste en separar la lógica de los datos, ya que los datos se guardan en componentes mientras que la lógica la ejecutan los sistemas.
+ECS supone una mejoría a EC gracias a la separación mencionada ya que mejora la escabilidad del código y la modularidad.
 
 \section{Modelos de \gls{ia}}
 
