@@ -48,8 +48,8 @@ La función de entrenamiento que se ejecuta al pulsar el botón ``Train model'' 
 \begin{enumerate}
     \item Se crea un entrenador del modelo seleccionado
     \item Se crea un objeto \textit{DataLoader} que se encargará de cargar los datos con el intervalo de tiempo de separación seleccionado.
-    \item Se separan los datos cargados en 60\% para entrenamiento, 20\% para validación y 20\% para test.
-    \item Se pasan las categorías con \textit{LabelEncoder} para que el modelo pueda entenderlas.
+    \item Se separan los datos cargados en 60\% para entrenamiento, 20\% para validación y 20\% para test. Se consideró hacer cross validation, pero los tiempos de entrenamiento ya eran demasiado largos para los modelos neuronales.
+    \item Se pasan las categorías con \textit{OneHotEncoder} para que el modelo pueda entenderlas.
     \item Se entrena el modelo con los datos de entrenamiento y validación.
     \item Se guarda el modelo.
     \item Se comprueba cual es el mejor modelo entrenado entre todos los intervalos de tiempo seleccionados.
@@ -114,7 +114,7 @@ De este ``mejor modelo'' se crea una matriz de confusión, se guarda el modelo e
 
 El modelo \gls{lstm} usado es un \textit{Sequential} de keras con una capa LSTM y una capa densa. La capa LSTM con los hiperparámetros antes descritos y la capa densa tiene tamaño el número de categorías de animaciones y una activación softmax. El modelo se compila utiliando el optimizador \textit{Adam}, la perdida se calcula con \textit{categorical\_crossentropy} y la métrica de evaluación es la \textit{accuracy}. Durante el proceso de entrenamiento se usan los \textit{callbacks} de \textit{EarlyStopping} para ahorrar recursos en entrenamientos que no parecen mejorar y los \textit{callbacks} de \textit{TensorBoard} para guardar los logs de entrenamiento y poder verlos en la interfaz de TensorBoard.
 
-Entre los modelos de \gls{lstm} entrenados, el del intervalo de 0.8 fue el que mejor rendimiento tuvo, con una precisión de 0.5912 en validación. A continuación se puede ver el esquema del modelo en la figura \ref{fig:lstm-0.8-ejemplo}, la matriz de confusión en la figura \ref{fig:lstm-0.8-matriz-ejemplo} y el gráfico de entrenamiento en la figura \ref{fig:lstm-0.8-grafico-ejemplo}. Podemos ver en la matriz de confusión que los gestos menos reconocidos son baile y saludo. Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosLSTM}.
+Entre los modelos de \gls{lstm} entrenados, el del intervalo de 0.8 fue el que mejor rendimiento tuvo, con una precisión de 0.51025 en entrenamiento y 0.5912 en validación. A continuación se puede ver el esquema del modelo en la figura \ref{fig:lstm-0.8-ejemplo}, la matriz de confusión en la figura \ref{fig:lstm-0.8-matriz-ejemplo} y el gráfico de entrenamiento en la figura \ref{fig:lstm-0.8-grafico-ejemplo}. Podemos ver en la matriz de confusión que los gestos menos reconocidos son baile y saludo. Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosLSTM}.
 
 \begin{figure}[h!]
     \centering
@@ -155,7 +155,7 @@ El modelo de \gls{cnn} se entrenó de una manera muy similar al de \gls{lstm}. E
     \label{fig:cnn-estructura}
 \end{figure}
 
-El método de entrenamiento es el mismo que el descrito en el apartado anterior, haciendo uso de keras-tuner para encontrar los mejores hiperparámetros. En el caso de este modelo, el mejor resultado se consigue con el intervalo de 1 segundo, haciendo este modelo más un reconocedor de poses que de gestos, con una precisión de 0.56002 en validación. La precisión en validación fue de 0.6342, lo que lo convierte en el mejor modelo entrenado. En la figura \ref{fig:cnn-1.0-ejemplo} se puede ver el esquema del modelo, en la figura \ref{fig:cnn-1.0-matriz-ejemplo} la matriz de confusión y en la figura \ref{fig:cnn-1.0-grafico-ejemplo} el gráfico de entrenamiento. En este caso podemos ver que los gestos que peor detecta son baile y saludo (siendo saludo muy confundido con pelea). Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosCNN}.
+El método de entrenamiento es el mismo que el descrito en el apartado anterior, haciendo uso de keras-tuner para encontrar los mejores hiperparámetros. En el caso de este modelo, el mejor resultado se consigue con el intervalo de 1 segundo, haciendo este modelo más un reconocedor de poses que de gestos, con una precisión de 0.55879 en entrenamiento y 0.56002 en validación. En la figura \ref{fig:cnn-1.0-ejemplo} se puede ver el esquema del modelo, en la figura \ref{fig:cnn-1.0-matriz-ejemplo} la matriz de confusión y en la figura \ref{fig:cnn-1.0-grafico-ejemplo} el gráfico de entrenamiento. En este caso podemos ver que los gestos que peor detecta son baile y saludo (siendo saludo muy confundido con pelea). Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosCNN}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/best-cnn1.0.png}
@@ -206,7 +206,7 @@ Con el \gls{rnn} se sigue la misma base que para los dos modelos anteriores. La 
     \label{fig:rnn-estructura}
 \end{figure}
 
-A pesar de ser el modelo con mayor busqueda de hiperparámetros, está en una reñida competición con el modelo \gls{cnn} para ver cual de los dos detecta peor los gestos. Su mejor intervalo ha sido el de 0.8 segundos con una precisión de 0.47865 en validación. En la figura \ref{fig:rnn-0.8-ejemplo} se puede ver el esquema del modelo, en la figura \ref{fig:rnn-0.8-matriz-ejemplo} la matriz de confusión y en la figura \ref{fig:rnn-0.8-grafico-ejemplo} el gráfico de entrenamiento. En este caso podemos ver que los gestos que peor detecta son baile y saludo (siendo pelea muy confundida con saludo). Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosRNN}.
+A pesar de ser el modelo con mayor busqueda de hiperparámetros, está en una reñida competición con el modelo \gls{cnn} para ver cual de los dos detecta peor los gestos. Su mejor intervalo ha sido el de 0.8 segundos con una precisión de 0.42714 en entrenamiento y 0.47865 en validación. En la figura \ref{fig:rnn-0.8-ejemplo} se puede ver el esquema del modelo, en la figura \ref{fig:rnn-0.8-matriz-ejemplo} la matriz de confusión y en la figura \ref{fig:rnn-0.8-grafico-ejemplo} el gráfico de entrenamiento. En este caso podemos ver que los gestos que peor detecta son baile y saludo (siendo pelea muy confundida con saludo). Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosRNN}.
 
 \begin{figure}[H]
     \centering
@@ -246,7 +246,7 @@ A diferencia de los modelos anteriores, este modelo usa DataFrames de pandas par
 
 Por desgracia, este modelo no deja una constancia tan rigurosa como los anteriores dado que no usa TensorBoard ni tiene un equivalente. A pesar de esto, este es el modelo con mayor rendimiento de lejos. Todos los intervalos tienen un rendimiento más o menos equivalente, ganando el de 0.8 segundos por muy poco.
 
-En la figura \ref{fig:rf-0.8-matriz-ejemplo} se puede ver la matriz de confusión del modelo y en el apendice \ref{appendix:resultadosRF} se pueden ver los resultados de todos los intervalos. En este caso podemos ver que los gestos que peor detecta son pelea y saludo. La precisión en validación fue de 0.85936, lo que lo convierte en el mejor modelo entrenado.
+En la figura \ref{fig:rf-0.8-matriz-ejemplo} se puede ver la matriz de confusión del modelo y en el apendice \ref{appendix:resultadosRF} se pueden ver los resultados de todos los intervalos. En este caso podemos ver que los gestos que peor detecta son pelea y saludo. La precisión en validación fue de 0.85936 y de 0.97487 en entrenamiento, lo que lo convierte en el mejor modelo entrenado.
 
 \begin{figure}[H]
     \centering
@@ -297,7 +297,7 @@ En el repositorio se pueden encontrar dos scripts, uno para windows y otro para 
 
 \subsection{Hardware, complejidad de datos y otras limitaciones}
 
-Este estudio ha estado muy limitado por el hardware disponible para el mismo. El equipo usado para el modelo tenía gráficas de consumidor de hace más de 5 años, haciendo que los modelos con redes neuronales tardaran bastante en entrenarse. Esto no fue un problema en el caso del \gls{randomforest}, ya que se entrena en \gls{cpu}.
+Este estudio ha estado muy limitado por el hardware disponible para el mismo. El equipo usado para el modelo tenía gráficas de consumidor de hace más de 5 años, haciendo que los modelos con redes neuronales tardaran bastante en entrenarse. Esto no fue un problema en el caso del \gls{randomforest}, ya que se entrena en \gls{cpu} y permite unos tiempos de entrenamiento mucho menores.
 
 Estas limitaciones de hardware también han afectado a la visión de los modelos a desarrollar, ya que en un principio se pensó en hacer modelos lo más simples posibles para poder utilizarlos incluso en equipos más limitados (gafas de \gls{vr} o equipos más antiguos).
 
