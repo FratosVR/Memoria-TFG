@@ -1,15 +1,15 @@
 \chapter{Estado de la Cuestión}
 \label{cap:estadoDeLaCuestion}
-En este capítulo se presenta el estado del arte de los distintos elementos que componen el trabajo. Estos campos son la comunicación no verbal en entornos virtuales, la captura de movimiento, distintos modelos de \gls{ia}, motores de videojuegos (en concreto Unity) y el estado actual de los entornos virtuales.
+En este capítulo se presenta el estado del arte de los distintos elementos que componen el trabajo. Estos campos son la comunicación no verbal en entornos virtuales, la captura de movimiento, distintos modelos de \gls{ia}, motores de videojuegos y el estado actual de los entornos virtuales.
 
 \section{Entornos virtuales}
 Como se puede ver en el artículo \cite{NOVE} se empezó a hablar en la década de los 90 de entornos virtuales y el \gls{metaverso} como nuevas formas de comunicarse con las personas.
 Estos entornos virtuales al principio eran muy sencillos, con pocas actividades que realizar y el chat escrito como única forma de comunicarse. Algún ejemplo de estos entornos virtuales eran el Second Life o el Habbo Hotel.
 
-Pero con la aparición de la \gls{vr} se hicieron populares entornos virtuales focalizados en esta tecnología, ya que ofrecía un grado de interacción superior a los anteriores mencionados.
-Junto a esto se empieza a hablar de ``inmersión'' y ``presencia'': dos términos que, a menudo se usan como sinónimos, pero son ligeramente distintos aunque están muy relacionados.
+Para continuar hablando de los entornos virtuales es necesario introducir los conceptos de ``inmersión'' y ``presencia'': dos términos que, a menudo se usan como sinónimos, pero son ligeramente distintos aunque están muy relacionados.
 Como lo define el artículo \cite{MRPI}, la presencia es la calidad experimental en entornos virtuales mientras que la inmersión está asociado con los aspectos técnicos de un sistema virtual que ayudan al usuario a potenciar la sensación de presencia.
 Estudios recientes como \cite{FPPS} demuestran como la presencia, tanto la nuestra propia como social, son potenciadores del apoyo social percibido, lo que se asocia con el bienestar de los usuarios; mientras que el estudio \cite{GVR} muestra que, aunque no haya mejoras performáticas entre jugar en entornos inmersivos (\gls{vr}) y no inmersivos (un ordenador), los jugadores encontraron más emocionantes y con mayor presencia los entornos interactivos.
+Es por esto último que con la aparición de la \gls{vr} se hicieron populares entornos virtuales focalizados en esta tecnología.
 
 Con todo esto es natural que las empresas inviertan en tecnologías que aumenten la sensación de inmersión para lograr una mayor presencia.
 Empresas como Apple o Meta están apostando en la tecnología \gls{vr}, sacando recientemente las gafas Apple Vision Pro (2024) y Meta Quest 3 (2023); mejorando aspectos como la calidad de las cámaras, el sonido, el reconocimiento de gestos y su comodidad que pueden amplificar la sensación de inmersión cuando se utilizan.
@@ -32,6 +32,7 @@ Los usuarios de esta aplicación han buscado distintas formas de conseguir una m
 La captura de movimiento es una técnica que permite digitalizar el movimiento de una persona. Esta técnica se usa sobre todo en el ámbito de la animación, el cine y los videojuegos.
 Para lograr esto se han desarrollado diferentes tipos de tecnologías: óptica, mecánica y magnética.
 
+\subsection{Captura de movimiento óptica}
 La captura de movimiento óptica consiste en el uso de cámaras para la captura.
 Según el artículo \cite{OPTICAL} esta captura se puede dividir en monocular o multivista dependiendo del número de cámaras y según si utilizan marcadores o no.
 En el mismo artículo explica el funcionamiento de la captura óptica multivista con el uso de marcdores, el cual se utiliza en gran medida en la industria audiovisual.
@@ -41,7 +42,8 @@ La reconstrucción del movimiento se basa en la sincronía de las cámaras y la 
 Un ejemplo de la captura de movimiento óptica monocular y sin marcadores son los sistemas basados en cámaras 3D que utilizan los \gls{IRs} para calcular la profundidad. Según el artículo \cite{KINECT} la Kinect (Microsoft, 2010) utilizaba esta tecnología para ello.
 Consiste en un proyector de \gls{IRs} cuyos rayos atraviesan una rejilla de difracción, convirtiéndose en un conjunto de puntos que, como se sabe la geometría relativa entre este proyector y una cámara de \gls{IRs} que venía incorporada, se podía triangular la posición de un objeto haciendo coincidir un punto observado con uno de los puntos del proyector.
 
-La captura de movimeinto mecánica se consigue mediante sensores inerciales.
+\subsection{Captura de movimiento mecánica}
+La captura de movimiento mecánica se consigue mediante sensores inerciales.
 Según se puede ver en \cite{XSENS}, el traje Xsens MVN es un ejemplo de ello.
 No utiliza cámaras o marcadores si no la combinación de giroscopios, acelerómetros y magnetómetros.
 Con los datos recibidos de estos sensores se puede estimar la rotación de los diferentes puntos mientras que la posición se puede estimar mediante supuestos de una cadena cinemática.
@@ -54,8 +56,8 @@ En la figura \ref{fig:XSensTraje} se puede ver el traje visto desde la espalda.
     \label{fig:XSensTraje}
 \end{figure}
 
-
-Finalmente la captura magnética se consiste mediante sensores electromagnéticos.
+\subsection{Captura de movimiento magnética}
+La captura magnética se consiste mediante sensores electromagnéticos.
 El artículo \cite{EMS} explica que la generación de valores en un campo electromagnético tridimensional es suficiente para determinar la posición y rotación de un objeto emisor frente a un sensor.
 Para ello se aplican transformaciones lineales a la excitación de la fuente y los vectores recibidos por el receptor para percibir pequeños cambios en los valores a determinar, los cuales se separan mediante combinaciones lineales de los vectores de salida del sensor y se utilizan para actualizar las coordenadas previas.
 
@@ -71,6 +73,7 @@ Actualmente los motores de videojuegos más usados en el mercado son Unity, Unre
 Aunque el artículo \cite{SGE} no se centre en un análisis del mercado en general, si contiene varias estadísticas sobre el uso de los principales motores de videojuegos en el mercado en 2023.
 Este artículo menciona que, de los juegos publicados en Steam ese año, un 60.04\% fueron hechos en Unity, un 16.42\% fueron hechos en Unreal y el 23.54\% restante fue hecho en motores propios de empresas (Source o CryEngine, por ejemplo).
 
+\subsection{Unity}
 Unity es un motor de videojuegos creado por Unity Technologies en 2005. A continuación se listan las principales herramientas que usa el motor:
 
 \begin{enumerate}
@@ -88,6 +91,26 @@ Este modelo supuso una mejoría ante la programación de videojuegos con objetos
 Desde 2022 mediante el paquete Unity DOTS (Data-Oriented Technology Stack) \footnote{Enlace a la documentación del paquete DOTS: \url{https://docs.unity3d.com/Packages/com.unity.entities@1.3/manual/index.html}} se pueden crear videojuegos siguiendo la arquitectura Entidad-Componente-Sistema (ECS).
 Esta arquitectura consiste en separar la lógica de los datos, ya que los datos se guardan en componentes mientras que la lógica la ejecutan los sistemas.
 ECS supone una mejoría a EC gracias a la separación mencionada ya que mejora la escabilidad del código y la modularidad.
+
+\subsection{Unreal}
+Unreal es un motor de videojuegos creado por Epic Games en 1998 con el lanzamiento de Unreal Engine 1.
+La versión estable actual es Unreal Engine 5.5, lanzada en noviembre de 2024.
+El código fuente de este motor está escrito en C++ y es accesible desde Github \footnote{Enlace a la página de Github de Epic: \url{https://github.com/epicgames}}.
+Las principales herramientas del motor son:
+
+
+\begin{enumerate}
+    \item Motor gráfico: Propio de Unreal. Este cuenta con  tecnologías para optimizar geometría (Nanite), sistema de iluminación dinámica (Lumen), y una técnica de escalado de imágenes (TSR)
+    \item Motor físico: Chaos Physics, desarrollado por Epic Games para mejorar la integración con las diferentes herramientas del motor.
+    \item Motor de audio: Propio de Epic Games llamado MetaSounds.
+    \item Lenguaje de scripting: C++ y Blueprints como scripting visual.
+    \item Lenguaje de scripting de shaders: High-Level Shading Language (HLSL) y Material Editor como forma de abstracción, permitiendo crear materiales con nodos visuales.
+\end{enumerate}
+
+Unreal utiliza una arquitectura orientada a clases jerárquicas más cercana a la programación orientada a objetos con alguna integración con componentes.
+Los objetos del mundo, llamados ''actores'', heredan de la clase AActor y son los componentes quienes le dan alguna de las funcionalidades (mallas, físicas o cámara por ejemplo).
+Las clases controlables (tanto por el jugador como por \gls{ia}) son entidades de tipo ''Pawn'' (clase APawn), de la cual hereda los objetos de tipo ''Character'' (clase ACharacter), los cuales tienen un movimiento humanoide incorporado.
+Para introducir movimiento a los objetos Pawn es necesario hacerlo mediante objetos de tipo controller (APlayerControler para entrada de input y AAIController para \gls{ia}).
 
 \section{Modelos de \gls{ia}}
 
