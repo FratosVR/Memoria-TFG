@@ -4,7 +4,7 @@
 
 Este estudio se centra en la comparativa de distintos modelos de \gls{ia} para la detección de gestos específicos mediante el traje de captura de movimiento Perception Neuron 3 con el fin de crear interacciones con \glspl{npc} a través de la comunicación no verbal y la creación de herramientas derivadas de los modelos que ayuden a la comunicación no verbal en entornos virtuales.
 Para ello se han conseguido datos artificiales a través del banco de animaciones Mixamo y reales a través de pruebas de usuarios (N=65) con el traje previamente mencionado, para así generar un dataset de gestos con coordenadas 3D.
-Con los datos recogidos y estandarizados se ha procedido a hacer una comparativa según su precisión entre cuatro modelos de \gls{ia} de las librerías de TensorFlow y YDF: \gls{lstm}, \gls{cnn}, \gls{rnn} y \gls{randomforest} siendo éste último el mejor modelo para el caso.
+Con los datos recogidos y estandarizados se ha procedido a hacer una comparativa según su precisión entre cuatro modelos de \gls{ia} de las librerías de TensorFlow y YDF: \gls{lstm}, \gls{cnn}, \gls{rnn} y \gls{randomforest} siendo éste último el mejor modelo para el caso con una precisión de validación del 0.86 y de 0.97 de entrenamiento.
 Con el modelo seleccionado se ha desplegado un servidor gracias a TensorFlow Serving para poder usar el modelo en una aplicación desarrollada a modo de demo con soporte para gafas de \gls{vr} para mostrar los resultados.
 
 
