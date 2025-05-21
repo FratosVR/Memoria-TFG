@@ -1,21 +1,6 @@
 \section{Modelos de \gls{ia}}
 
-Tras la adaptación y guardado de datos, se procede al desarrollo de los modelos de \gls{ia}. Este desarrollo no implica solo el modelo, sino también la creación de una interfaz de entrenamiento y visualizado de resultados(para los modelos que lo permiten). Durante todo el proceso se han usado las siguientes tecnologías:
-\begin{itemize}
-    \item \textbf{Python}
-    \item \textbf{Tensorflow}
-    \item \textbf{TensorBoard}
-    \item \textbf{Tensorflow Serving}
-    \item \textbf{Keras}
-    \item \textbf{Pandas}
-    \item \textbf{Numpy}
-    \item \textbf{Matplotlib}
-    \item \textbf{Scikit-learn}
-    \item \textbf{YDF}
-    \item \textbf{Gradio}
-    \item \textbf{Kaggle}
-    \item \textbf{Jupyter Notebook}
-\end{itemize}
+Tras la adaptación y guardado de datos, se procede al desarrollo de los modelos de \gls{ia}. Este desarrollo no implica solo el modelo, sino también la creación de una interfaz de entrenamiento y visualizado de resultados(para los modelos que lo permiten).
 
 En el repositorio\footnote{Enlace al repositorio de GitHub \url{https://github.com/FratosVR/Models}} se puede encontrar el código de todos los modelos y su entrenamiento, así como algunos modelos ya preentrenados. Durante esta sección se explicará el proceso de desarrollo de cada parte del proyecto.
 
@@ -36,7 +21,7 @@ Se usó Gradio(\cite{Abid_Gradio_Hassle-free_sharing_2019}) para crear una inter
 \end{itemize}
 
 Esta interfaz (figura \ref{fig:interfaz-train}) se hizo lo mas simple posible para que un usuario estándar pudiera poner a entrenar un modelo sin tener que tocar nada de código. Sólo se tienen que seleccionar el modelo y el intervalo deseado, introducir la ruta al \textit{dataset} y esperar a que termine.
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Imagenes/Bitmap/interfaz-train.png}
     \caption{Interfaz de entrenamiento}
@@ -58,7 +43,7 @@ La función de entrenamiento que se ejecuta al pulsar el botón ``Train model'' 
 
 En la parte superior izquierda se puede ver dos secciones: ``Train'' y ``TensorBoard''. La sección ``Train'' es la explicada anteriormente, la sección ``TensorBoard'' es una sección que permite ver el progreso del entrenamiento en tiempo real. No solo eso, sino que también nos permite ver el rendimiento de modelos ya entrenados y ver como los hiperparámetros han afectado a su tasa de acierto. TensorBoard permite añadir funciones al código de entrenamiento para modificar el comportamiento del método de entrenamiento y dejar constancia de las distintas partes del mismo. Esta interfaz se puede ver en la figura \ref{fig:interfaz-tensorboard}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Imagenes/Bitmap/interfaz-tensorboard.png}
     \caption{Interfaz de TensorBoard}
@@ -67,7 +52,7 @@ En la parte superior izquierda se puede ver dos secciones: ``Train'' y ``TensorB
 
 Para todo lo descrito, el archivo ``Interface.py'' tiene la estructura presentada en la figura \ref{fig:interfaz-estructura}. Las funciones \_\_change\_interval y \_\_change\_interval\_all cambian los intervalos de tiempo usados dentro del entrenamiento, \_\_setup\_ui crea el \textit{layout} de la interfaz, \_\_refresh\_tensorboard cambia la ruta de los \textit{logs} de TensorBoard y recarga el \gls{iframe}. El método \_\_train ejecuta todo el proceso de entrenamiento previamente descrito.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/classes_Interface.png}
     \caption{Estructura del archivo de la interfaz}
@@ -105,7 +90,7 @@ El entrenamiento crea un modelo con los hiperparámetros seleccionados dentro de
 
 De este ``mejor modelo'' se crea una matriz de confusión, se guarda el modelo en formato keras y se envían las estadísticas a la interfaz de gradio. Todo este proceso queda registrado en TensorBoard gracias a la lilbrería \textit{HParams} (\cite{hparams}).
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/classes_LSTMTrainer.png}
     \caption{Estructura de la clase LSTMTrainer}
@@ -116,19 +101,19 @@ El modelo \gls{lstm} usado es un \textit{Sequential} de keras con una capa LSTM 
 
 Entre los modelos de \gls{lstm} entrenados, el del intervalo de 0.8 fue el que mejor rendimiento tuvo, con una precisión de 0.51025 en entrenamiento y 0.5912 en validación. A continuación se puede ver el esquema del modelo en la figura \ref{fig:lstm-0.8-ejemplo}, la matriz de confusión en la figura \ref{fig:lstm-0.8-matriz-ejemplo} y el gráfico de entrenamiento en la figura \ref{fig:lstm-0.8-grafico-ejemplo}. Podemos ver en la matriz de confusión que los gestos menos reconocidos son baile y saludo. Los resultados del resto de intervalos se pueden ver en el apéndice \ref{appendix:resultadosLSTM}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/best-lstm0.8.png}
+    \includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/best-lstm0.8.png}
     \caption{Esquema del modelo LSTM}
     \label{fig:lstm-0.8-ejemplo}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/CM_best-lstm0.8.png}
     \caption{Matriz de confusión del modelo LSTM}
     \label{fig:lstm-0.8-matriz-ejemplo}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/tb-lstm-0.8.png}
     \caption{Gráfico de entrenamiento del modelo LSTM}
@@ -148,7 +133,7 @@ El modelo de \gls{cnn} se entrenó de una manera muy similar al de \gls{lstm}. E
     \item \textbf{pool\_size}: Tamaño del \textit{pooling} de la capa convolucional.
 \end{itemize}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/classes_CNNTrainer.png}
     \caption{Estructura de la clase CNNTrainer}
@@ -199,7 +184,7 @@ Con el \gls{rnn} se sigue la misma base que para los dos modelos anteriores. La 
     \item \textbf{use bias}: Si se usa el \textit{bias} de la capa oculta.
 \end{itemize}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/classes_RNNTrainer.png}
     \caption{Estructura de la clase RNNTrainer}
@@ -210,7 +195,7 @@ A pesar de ser el modelo con mayor busqueda de hiperparámetros, está en una re
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/best-rnn0.8.png}
+    \includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/best-rnn0.8.png}
     \caption{Esquema del modelo RNN}
     \label{fig:rnn-0.8-ejemplo}
 \end{figure}
@@ -237,7 +222,7 @@ Este modelo no usa tensorflow como tal, dado que YDF es un desarrollo que deja a
 
 A diferencia de los modelos anteriores, este modelo usa DataFrames de pandas para el entrenamiento y la predicción en vez de tensores. En este entrenamiento usamos \textit{RandomSearchTuner} para buscar la mejor combinación de número de árboles, profundidad máxima y mínimo de ejemplos.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Imagenes/Bitmap/classes_RandomForestTrainer.png}
     \caption{Estructura de la clase RFTrainer}

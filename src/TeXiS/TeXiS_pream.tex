@@ -185,7 +185,9 @@
 
 \ifpdf
   \RequirePackage[pdfborder=0,hidelinks,hyperindex,pdfpagelabels,hypertexnames=false]{hyperref}
-  \def\pdfBorderAttrs{/Border [0 0 0] } % Ningún borde en los enlaces
+  \def\pdfBorderAttrs{/Border [0 0 0] }
+\else
+  \usepackage{hyperref}
 \fi
 
 % El  paquete  glosstex  te  permite  generar listas  de  acrónimos  y
@@ -275,21 +277,16 @@
   \newcommand{\acl}[1]{#1}
   \newcommand{\acf}[1]{#1}
 \else
-  \usepackage[nonumberlist,toc,nopostdot,style=long,hyperfirst=true]{glossaries}
+  \usepackage[nonumberlist,toc,nopostdot,style=long,hyperfirst=true, automake, shortcuts]{glossaries-extra}
 
-  \makeglossaries
   \input{acronimos.tex}
+  \makeglossaries
 \fi
 
 % Cuando se  genera el  índice, se necesita  el paquete  hyperref, que
 % permite referencias  (o enlaces) en el propio  documento. El paquete
 % aparece como \RequirePackage cuando se está usando pdflatex, gracias
 % al comando anterior. Si no se está en pdf, se incluye directamente
-\ifpdf
-\else
-  \usepackage{hyperref}
-\fi
-
 \hypersetup{colorlinks=false}
 
 
