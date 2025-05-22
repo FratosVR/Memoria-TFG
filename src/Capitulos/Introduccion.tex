@@ -3,24 +3,6 @@
 
 % \chapterquote{La revolución industrial y sus consecuencias han sido un desastre para la raza humana}{Theodore Kaczynski}
 
-% En los últimos años se ha visto un gran interés y evolución de las tecnologías de realidad virtual a mano de empresas como Apple con su lanzamiento de las Apple Glasses o Meta con el lanzamiento de las Meta Quest 3 o su interés por el \gls{metaverso} con su aplicación de Meta Horizon Worlds.
-
-% Es por ello que es interesante investigar la comunicación no verbal en entornos virtuales, ya no solo para aplicaciones con varios usuarios si no también para poder mejorar interacciones con \glspl{npc} en este tipo de entornos.
-
-% Nuestra propuesta en este Trabajo de Fin de Grado es una primera aproximación de cómo se puede usar la \gls{ia} y la tecnología de captura de movimiento para lograr esa mejora en las interacciones en los mundos virtuales mediante la comunicación no verbal, siendo este caso la exploración de la capacidad de clasificar distintos gestos.
-% Los gestos seleccionados han sido seis gestos que se han útiles a la hora de que un NPC pueda reconocerlo en un videojuego. Estos gestos han sido:
-% \begin{enumerate}
-% 	%\renewcommand{\theenumi}{\alph{enumi}}
-% 	\item Bailar
-% 	\item Saludar
-% 	\item Señalar
-% 	\item Sentarse
-% 	\item Pelear
-% 	\item Correr
-% \end{enumerate}
-
-% Para poder realizar este trabajo se ha requerido usar las gafas de realidad virtual Meta (antes conocidas como Oculus) Quest 2 y 3 y el traje de captura de movimiento Perception Neuron 3, de la empresa Noitom, como hardware y Python C\# y Unity como los requisitos de software.
-
 En los últimos años el avance de tecnologías inmersivas como la \gls{vr} ha proporcionado un gran cambio en la forma en la que los usuarios interactúan en los entornos digitales.
 Grandes empresas como Meta o Apple han apostado por el desarrollo de hardware para estas tecnologías con el lanzamiento de Meta Quest 3 y Apple Vision Pro, así como con la creación de plataformas de interacción social en el \gls{metaverso} con el desarrollo de Meta Horizon Worlds.
 Esta tecnología ha abierto nuevas oportunidades para explorar modos de comunicación más naturales en espacios virtuales mediante la comunicación no verbal.
@@ -31,30 +13,36 @@ Es por esto que el desarrollo de herramientas que permitan capturar e interpreta
 
 
 \section{Motivación}
-Este trabajo se inscribe dentro de la línea de investigación de herramientas que puedan reconocer gestos realizados por un usuario mediante un traje de captura de movimiento.
-Para ello se parte de seis gestos que pueden ser de utilidad para que un \gls{npc} los sepa identificar a la hora de la comunicación con él: saludar, señalar, sentarse, pelear, correr y bailar.
+Como se ha mencionado en la introduccion, el uso de la comunicación no verbal en entornos virtuales está limitado y prefijado por el diseño de éstos, limitando una parte fundamental de la forma de expresarse cotidiana de los humanos.
+Debido a esto y como podemos ver en artículos como \cite{Neverova} o \cite{VRHANDS} la detección de gestos es un campo de estudio que actualmente se está explorando.
+Por estas razones es interesante investigar formas de ampliar esta representación de la comunicación no verbal para que la comunicación entre usuarios y \glspl{npc} sea más natural.
 
-Debido a la necesidad de grandes cantidades de datos de las animaciones buscadas, este proyecto también busca la creación de un dataset de los datos mediante bancos de animaciones y captura de movimiento de usuarios.
+Es por este motivo que este trabajo se inscribe dentro de la línea de investigación de herramientas que puedan reconocer gestos realizados por un usuario mediante un traje de captura de movimiento con el fin de crear entornos virtuales más inmersivos y naturales para los usuarios.
 
-En resumen, el propósito de este trabajo es la detección de seis gestos en tiempo real mediante un traje de captura de movimiento con el fin de avanzar en la mejora del uso de la comunicación no verbal en espacios virtuales.
+Por otra parte es necesaria una gran cantidad de datos para crear modelos de \gls{ia} que permitan crear las herramientas mencionadas. 
+En el caso de este proyecto los datos necesarios son una secuencia de coordenadas 3D de posiciones y rotaciones de los huesos del esqueleto a lo largo de las animaciones, por lo que los datos que se necesitan procesar tienen un tamaño relativamente grande.
+Es por esto que es necesario crear modelos complejos que procesen un número significativo de datos de entrada, pero como desarrollaremos a lo largo del trabajo, no ha sido posible encontrar datasets de este tipo de datos.
+Como consecuencia de este motivo una gran aportación de este trabajo en el campo ha sido la creación de un dataset gracias a la extracción de animaciones de un banco especializado en estas y a la captura de movimientos de usuarios.
 
-Debido al crecimiento de entornos virtuales en los últimos años y a la limitación en estos espacios de representación de una parte tan fundamental de la comunicación en los humanos como es la comunicación no verbal, es interesante investigar formas de ampliar esta representación para que la comunicación entre usuarios y \glspl{npc} sea más natural.
-
-La motivación principal de este trabajo es el interés por tener entornos virtuales más inmersivos y naturales para los usuarios. También se busca con este trabajo la posibilidad de crear herramientas de accesibilidad para usuarios con diversidades funcionales que les impidan comunicarse con usuarios sin estas diversidades (ej. problemas de vista).
-
-
-
-Como podemos ver en artículos como \cite{Neverova} o \cite{VRHANDS} la detección de la gestos es un campo de estudio que actualmente se está explorando.
-La investigación que nosotros proponemos para aportar a este campo es el uso de un traje de movimiento de cuerpo entero con el fin de detectar seis gestos para su uso en entornos virtuales y videojuegos, siendo esos gestos saludar, señalar, sentarse, pelear, correr y bailar.
-
+En resumen, la carencia de métodos naturales de explotar la comunicación no verbal en entornos virtuales y la falta de datasets de animaciones han motivado los objetivos mencionados y que expandiremos a continuación.
 \section{Objetivos}
-Implementación de un modelo de \gls{ia} que, con baja latencia, permita identificar el gesto que se esté realizando con un traje de captura de movimiento en tiempo real, con  la intención de mejorar la comunicación no verbal en entornos virtuales.
+El objetivo general de este proyecto es la implementación de un modelo de \gls{ia} que, con baja latencia, permita identificar el gesto que se esté realizando con un traje de captura de movimiento en tiempo real, con la intención de mejorar la comunicación no verbal en entornos virtuales.
+Para cumplir el objetivo se han propuesto las siguientes metas durante el desarrollo del trabajo:
+\begin{enumerate}
+	%\renewcommand{\theenumi}{\alph{enumi}}
+	\item Búsqueda de datasets de animaciones que se han considerado relevantes a la hora de comunicarse con un \gls{npc} en un videojuego. Estas animaciones han sido bailar, saludar, señalar, sentarse, pelear y correr.
+	\item Extracción automática de las animaciones mencionadas anteriormente de bancos de animaciones y posterior procesamiento.
+	\item Extracción de las animaciones mediante la captura de movimiento de un grupo heterogéneo de usuarios.
+	\item Implementación, entrenamiento y comparación de distintos modelos de \gls{ia}, tanto redes neuronales (LSTM, CNN y RNN) como modelos de clasificación clásicos (Random Forest)
+	\item Implementación de una aplicación final a modo de demostración para enseñar los resultados en \gls{vr} para aumentar el grado de inmersión.
+\end{enumerate}
 
-Debido a la falta de datasets de animaciones encontrados en el desarrollo del proyecto se estableció como objetivo secundario la publicación del dataset creado con los usuarios.
+Como gran objetivo secundario y debido a la falta de datasets de animaciones se ha propuesto publicar los datasets resultantes, tanto de las animaciones artificiales como de las capturas de usuarios.
+% Debido a la falta de datasets de animaciones encontrados en el desarrollo del proyecto se estableció como objetivo secundario la publicación del dataset creado con los usuarios.
 
-Otro objetivo secundario es la creación de una interfaz de usuario que permite a usuarios sin experiencia entrenar sus propios modelos con sus propios gestos sin tener que modificar el código.
+% Otro objetivo secundario es la creación de una interfaz de usuario que permite a usuarios sin experiencia entrenar sus propios modelos con sus propios gestos sin tener que modificar el código.
 
-Por último, se creará una aplicación de demostración para mostrar el funcionamiento del modelo resultante.
+% Por último, se creará una aplicación de demostración para mostrar el funcionamiento del modelo resultante.
 
 \section{Plan de trabajo}
 Nuestro plan de trabajo consiste en varios pasos:
