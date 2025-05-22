@@ -10,14 +10,17 @@
 % Este estudio puede servir para la investigación de otros modelos que se centren más en las diferencias emocionales entre mismos tipos de gesto, diferencias culturales entre distintos tipos de gestos o otros temas relacionados con movimientos humanos.
 
 \subsection{Conclusiones de la búsqueda de datasets}
-Al buscar diferentes datasets de animaciones se ha llegado a la conclusión de que eran escasos aquellos que cumpliesen con los requerimientos del proyecto: tanto por la escasez de gestos buscados como la adecuación del esqueleto del personaje utilizado.
+Tras la búsqueda de datasets de animaciones se ha llegado a la conclusión de que no existen datasets públicos suficientes para el objetivo de este estudio. Esta escasez se debe no solo a la falta en número de datasets, sino también a la falta de gestos referentes a comunicación no verbal, habiendo algunos sobre deportes o temáticas muy concretas y pocos de carácter general.  Otra limitación de estos datasets ha sido la facilidad de adecuación o conversión a un formato compatible con el traje de captura de movimiento usado en el estudio.
+
+Estas conclusiones nos llevaron a la necesidad de crear un dataset propio recabando animaciones de bancos de animaciones y mediante pruebas con usuarios.
 
 \subsection{Conclusiones de la extracción de animaciones de bancos de animaciones}
-Para la extracción de animaciones en Mixamo se ha creado una herramienta para hacerlo de forma automática.
-Esta herramienta cumple su objetivo completamente, ya que tan solo indicando el nombre de los gestos que se desean buscar se descargan, se procesan en Unity y se suben a Kaggle de forma automática.
-Además la herramienta es independiente al número de gestos que se quieren buscar y a su vez del número de animaciones que hay de esos gestos, consiguiendo una gran escabilidad de esta forma haciendo posible la introducción de nuevos gestos sin tener que cambiar nada de la herramienta.
+Para la conversión de animaciones de Mixamo se ha creado una herramienta para hacerlo de forma automática y se ha modificado otra herramienta para hacer una descarga en masa de estas animaciones.
 
-Otra conclusión que hemos sacado a partir de la extracción de animaciones en Mixamo es que los datos obtenidos estaban desbalanceados en número y duración, haciendo necesaria la recolección de datos con usuarios.
+La herramienta de conversión de gestos cumple su objetivo completamente, ya que tan solo indicando el nombre de la carpeta que contiene los gestos descargados coge los gestos, se procesan en Unity y se suben a Kaggle de forma automática.
+Además la herramienta es independiente al número de gestos que se quieren convertir y a su vez del número de animaciones que hay de esos gestos, consiguiendo una gran escabilidad de esta forma haciendo posible la introducción de nuevos gestos sin tener que cambiar nada de la herramienta.
+
+Otra conclusión que se ha sacado a partir de la extracción de animaciones en Mixamo es que los datos obtenidos estaban desbalanceados en número, haciendo necesaria la recolección de datos con usuarios.
 
 \subsection{Conclusiones de la recolección de animaciones con usuarios}
 Para la recolección de datos con usuarios se anunció de forma insistente en las redes sociales de los autores del estudio así como por las distintas facultades de la Universidad Complutense de Madrid.
@@ -30,11 +33,14 @@ Gracias a la prueba se obtuvieron 975 animaciones (195 animaciones de saludar, s
 Esto se puede ver en las figuras \ref{fig:datos-bruto} y \ref{fig:datos-estandar}.
 
 \subsection{Conclusiones de la comparativa entre los modelos de \gls{ia}}
-- MODELOS DE REDES MAL POR FALTA DE DATOS
 
-- RANDOM FOREST EL MEJOR
+En cuanto a los modelos de \gls{ia}, se ha visto que los modelos de redes no han obtenido los resultados esperados, siendo esto seguramente por una mezcla de falta de datos y simplificación de las redes neuronales para asegurar un tiempo de entrenamiento menor y un computo más rápido a la hora de realizar inferencias.
 
-- CONFUSIÓN DE PELEA Y SALUDO SEGURAMENTE POR EL MOVIMIENTO REPENTINO DEL BRAZO DOMINANTE
+Sin embargo, el \gls{randomforest} ha sido el que ha obtenido mejores resultados, siendo el modelo más rápido (tanto en inferencia como en entrenamiento), el modelo más ligero y el modelo más adaptable. Este modelo se podría usar en sistemas con recursos limitados como pueden ser gafas de \gls{vr} independientes como las Meta Quest o en ordenadores más potentes, e incluso en ecosistemas de \gls{ia} por su posible traducción a TensorFlow ya implementada.
+
+En el análisis de los resultados del \gls{randomforest} se ha visto que el modelo le da una gran importancia a la coordenada y de la pierna izquierda, a la coordenada y del pie izquierdo en el segundo intervalo de tiempo. Esto puede indicar que los gestos dependen mucho de la posición de las piernas para discriminar si se está corriendo, bailando, saludando o señalando.
+
+También se puede ver una ligera confusión entre los gestos de pelea y saludar. Esto puede ser debido a los movimientos rápidos de las manos en ambos tipos de gesto, que al no tener dedos por limitación del traje, puede dar lugar a confusión entre un puñetazo y un saludo.
 
 \subsection{Conclusiones de la aplicación final}
 La aplicación final es una demo que se conecta a un servidor para mostrar los resultados.
