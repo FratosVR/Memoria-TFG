@@ -34,14 +34,25 @@ Para ello se parte de seis gestos que pueden ser de utilidad para que un \gls{np
 
 Debido a la necesidad de grandes cantidades de datos de las animaciones buscadas, este proyecto también busca la creación de un dataset de los datos mediante bancos de animaciones y captura de movimiento de usuarios.
 
-En resumen, el propósito de este trabajo es la detección de seis gestos en tiempo real con el fin de avanzar en la mejora del uso de la comunicación no verbal en espacios virtuales.
+En resumen, el propósito de este trabajo es la detección de seis gestos en tiempo real mediante un traje de captura de movimiento con el fin de avanzar en la mejora del uso de la comunicación no verbal en espacios virtuales.
 
 \section{Motivación}
+Debido al crecimiento de entornos virtuales en los últimos años y a la limitación en estos espacios de representación de una parte tan fundamental de la comunicación en los humanos como es la comunicación no verbal, es interesante investigar formas de ampliar esta representación para que la comunicación entre usuarios y \glspl{npc} sea más natural.
 %Este trabajo se inscribe dentro de la línea de investigación de procesamiento del lenguaje no verbal y tiene como propósito diseñar y evaluar un sistema que permita reconocer gestos humanos a partir de datos de captura de movimiento para mejorar la interacción con personajes no jugables (NPCs) y otros elementos virtuales.
 La principal motivación de este trabajo es el interés por tener entornos virtuales más inmersivos y naturales para los usuarios. También se busca con este trabajo la posibilidad de crear herramientas de accesibilidad para usuarios con diversidades funcionales que les impidan comunicarse con usuarios sin estas diversidades (ej. problemas de vista).
 
+Este estudio propone utilizar un traje de captura de movimiento con el fin de detectar seis gestos en tiempo real: saludar, señalar, sentarse, pelear, correr y bailar.
+%Para ello se hará una comparativa entre distintos modelos de \gls{ia} con el fin de encontrar un modelo que pueda llevar a cabo esa predicción de forma adecuada con los datos disponibles, tanto por su precisión como por su rapidez.
+
+Como podemos ver en artículos como \cite{Neverova} o \cite{VRHANDS} la detección de la gestos es un campo de estudio que actualmente se está explorando.
+La investigación que nosotros proponemos para aportar a este campo es el uso de un traje de movimiento de cuerpo entero con el fin de detectar seis gestos para su uso en entornos virtuales y videojuegos, siendo esos gestos saludar, señalar, sentarse, pelear, correr y bailar.
+
 \section{Objetivos}
-Implementación de un modelo de \gls{ia} que, con baja latencia, permita identificar el gesto que se esté realizando con un traje de captura de movimiento en tiempo real. También se busca crear un dataset de gestos compuesto por animaciones de usuarios reales y de animaciones creadas por ordenador.
+Implementación de un modelo de \gls{ia} que, con baja latencia, permita identificar el gesto que se esté realizando con un traje de captura de movimiento en tiempo real, con  la intención de mejorar la comunicación no verbal en entornos virtuales. También se busca crear un dataset de gestos compuesto por animaciones de usuarios reales y de animaciones creadas por ordenador.
+
+TO DO: más
+
+Debido a la falta de datasets de animaciones encontrados en el desarrollo del proyecto se estableció como objetivo secundario la publicación del dataset creado con los usuarios.
 
 \section{Plan de trabajo}
 Nuestro plan de trabajo consiste en varios pasos:

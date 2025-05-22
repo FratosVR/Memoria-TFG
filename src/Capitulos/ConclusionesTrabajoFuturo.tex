@@ -3,21 +3,57 @@
 
 \section{Conclusiones}
 
-Este estudio presenta la comparativa de tres redes neuronales básicas y un \gls{randomforest} para la clasificación de poses realizadas por un humano llevando un traje de captura de movimiento. Teniendo en cuenta las limitaciones del traje (las personas con algún tipo de discapacidad del aparato motor, por ejemplo la falta de alguna extremidad o miembro, no pueden usar correctamente el traje), se ha conseguido un modelo relativamente ligero que detecta las poses de todo el dataset con un gran nivel de acierto.
+% Este estudio presenta la comparativa de tres redes neuronales básicas y un \gls{randomforest} para la clasificación de poses realizadas por un humano llevando un traje de captura de movimiento. Teniendo en cuenta las limitaciones del traje (las personas con algún tipo de discapacidad del aparato motor, por ejemplo la falta de alguna extremidad o miembro, no pueden usar correctamente el traje), se ha conseguido un modelo relativamente ligero que detecta las poses de todo el dataset con un gran nivel de acierto.
 
-Este estudio también ha tenido sus limitaciones, como la falta de datos de entrenamiento, la falta de precedentes en el uso de trajes de captura de movimiento para entrenar modelos de \gls{ia} y el uso de hardware de consumidor en vez de uno más profesional. Todos estos problemas se han ido subsanando con la ayuda de los voluntarios de los experimentos, el conocimiento adquirido durante la carrera y la ayuda de la asociación LAG al ceder equipos para el entrenamiento.
+% Este estudio también ha tenido sus limitaciones, como la falta de datos de entrenamiento, la falta de precedentes en el uso de trajes de captura de movimiento para entrenar modelos de \gls{ia} y el uso de hardware de consumidor en vez de uno más profesional. Todos estos problemas se han ido subsanando con la ayuda de los voluntarios de los experimentos, el conocimiento adquirido durante la carrera y la ayuda de la asociación LAG al ceder equipos para el entrenamiento.
 
-Este estudio puede servir para la investigación de otros modelos que se centren más en las diferencias emocionales entre mismos tipos de gesto, diferencias culturales entre distintos tipos de gestos o otros temas relacionados con movimientos humanos.
+% Este estudio puede servir para la investigación de otros modelos que se centren más en las diferencias emocionales entre mismos tipos de gesto, diferencias culturales entre distintos tipos de gestos o otros temas relacionados con movimientos humanos.
 
+\subsection{Conclusiones de la búsqueda de datasets}
+Al buscar diferentes datasets de animaciones se ha llegado a la conclusión de que eran escasos aquellos que cumpliesen con los requerimientos del proyecto: tanto por la escasez de gestos buscados como la adecuación del esqueleto del personaje utilizado.
 
+\subsection{Conclusiones de la extracción de animaciones de bancos de animaciones}
+Para la extracción de animaciones en Mixamo se ha creado una herramienta para hacerlo de forma automática.
+Esta herramienta cumple su objetivo completamente, ya que tan solo indicando el nombre de los gestos que se desean buscar se descargan, se procesan en Unity y se suben a Kaggle de forma automática.
+Además la herramienta es independiente al número de gestos que se quieren buscar y a su vez del número de animaciones que hay de esos gestos, consiguiendo una gran escabilidad de esta forma haciendo posible la introducción de nuevos gestos sin tener que cambiar nada de la herramienta.
+
+Otra conclusión que hemos sacado a partir de la extracción de animaciones en Mixamo es que los datos obtenidos estaban desbalanceados en número y duración, haciendo necesaria la recolección de datos con usuarios.
+
+\subsection{Conclusiones de la recolección de animaciones con usuarios}
+Para la recolección de datos con usuarios se anunció de forma insistente en las redes sociales de los autores del estudio así como por las distintas facultades de la Universidad Complutense de Madrid.
+Los anuncios cumplieron su objetivo, consiguiendo 75 respuestas de los cuales se presentaron 65 participantes, consiguiendo un 86,67\% de asistencia.
+
+Como se puede ver en las figuras del apéndice \ref{appendix:formularioDemografia} el grupo de participantes, con excepción del género no binario, es heterogéneo en cuanto al género con una pequeña diferencia de porcentaje entre hombres y mujeres.
+Donde se puede ver mayor diferencia es entre la mano dominante de los usuarios, siendo los zurdos tan solo un 6.15\% de la población total del grupo.
+
+Gracias a la prueba se obtuvieron 975 animaciones (195 animaciones de saludar, señalar, sentarse, pelear y correr), lo que se pensó que solucionaría el desbalanceo con respecto al baile, pero se después de la estandarización de los datos se comprobó que la animación de bailar seguía estando bastante diferenciada del resto.
+Esto se puede ver en las figuras \ref{fig:datos-bruto} y \ref{fig:datos-estandar}.
+
+\subsection{Conclusiones de la comparativa entre los modelos de \gls{ia}}
+- MODELOS DE REDES MAL POR FALTA DE DATOS
+
+- RANDOM FOREST EL MEJOR
+
+- CONFUSIÓN DE PELEA Y SALUDO SEGURAMENTE POR EL MOVIMIENTO REPENTINO DEL BRAZO DOMINANTE
+
+\subsection{Conclusiones de la aplicación final}
+La aplicación final es una demo que se conecta a un servidor para mostrar los resultados.
+
+La parte negativa de esta aplicación es la forma de conectarse con el sevidor en el que está el modelo, ya que hace peticiones web al servidor de Tensor Serving directamente, lo que lo hace dependiente de éste.
+
+Finalmente la aplicación final cumple su propósito de enseñar al usuario la animación predicha con una latencia mínima.
+
+\subsection{Conclusiones generales}
+El trabajo ha cumplido con los objetivos propuestos, haciendo posible la detección de gestos en tiempo real con un pequeño márgen de error y la publicación de un dataset de animaciones captadas por usuarios reales.
 
 \section{Trabajo Futuro}
 
 El trabajo a futuro de este estudio se puede centrar en varios esfuerzos:
 \begin{itemize}
-    \item Mejorar el dataset, incluyendo gente con diversidad funcional, aumentando el número de muestras por gesto y añadiendo nuevas categorías.
+    \item Mejorar el dataset, incluyendo gente con diversidad funcional, aumentando el número de muestras por gesto, teniendo en cuenta los dedos de las manos y añadiendo nuevas categorías.
     \item Investigar otros modelos de \gls{ia} que puedan mejorar la precisión de la clasificación y hacer clasificación no solo de gestos, sino también de emociones.
     \item Estandarizar el servidor para que pueda ser usado con otras tecnologías de \gls{ia} y no solo con TensorFlow.
+    \item Implementar otro modelo que no solo tenga en cuenta el gesto predicho actual sino también todo el contexto para poder avanzar en el uso de la comunicación no verbal con \glspl{npc}
 \end{itemize}
 
 
