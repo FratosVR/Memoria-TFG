@@ -59,7 +59,7 @@ Al ver la escasez de estos datasets se optó por sacaralos de un banco de animac
 
 En un primer momento investigó sobre el uso de los Assets Bundles de Unity para la carga automática de recursos externos a la aplicación, pero al final decidió no usar ese método.
 Finalmente para esa aplicación decidió usar el Asset Database de Unity, por lo que se dedicó a la investigación de esta \gls{api} y finalmente a la implementación de la herramienta.
-Una vez funcionaba la implementación de la carga de animaciones en tiempo de ejecución investigó como poder ejecutar todas estas animaciones seguidas en tiempo de ejecución, hasta que finalmente encontró el componente ''Animator Override Controller'', lo que le permitió cumplir el objetivo de la herramienta.
+Una vez funcionaba la implementación de la carga de animaciones en tiempo de ejecución investigó como poder ejecutar todas estas animaciones seguidas en tiempo de ejecución, hasta que finalmente encontró el componente ``Animator Override Controller'', lo que le permitió cumplir el objetivo de la herramienta.
 
 Debido a los pocos datos encontrados en Mixamo se decidió grabar a usuarios con el traje de captura de movimiento, por lo que hizo en Unity una herramienta sencilla para crear \glspl{csv} en tiempo real con el traje de captura de movimiento.
 
@@ -71,8 +71,8 @@ También le fue dando indicaciones a los usuarios sobre los gestos a realizar, g
 Adicionalmente se encargó junto a su compañero de buscar nuevos usuarios para cubrir huecos que habían quedado libres con el fin de maximizar el número de datos recogidos y gestionar a las personas que solapaban con otros usuarios.
 
 Una vez recogidos los datos investigó diferentes formas de conectarse con el servidor que hostee el modelo elegido.
-Investigó el uso de ''Unity NetCode'', un paquete propio de Unity para la comunicación en red en videojuegos y también investigó la posibilidad de realizar la comunicación mediante las llamadas nativas de C\#.
-Finalmente se decidió usar la arquitectura \gls{API REST}, por lo que investigó su funcionamiento mediante el paquete nativo ''UnityWebRequest'' y empezó la aplicación final con la implementación de ésta en Unity.
+Investigó el uso de ``Unity NetCode'', un paquete propio de Unity para la comunicación en red en videojuegos y también investigó la posibilidad de realizar la comunicación mediante las llamadas nativas de C\#.
+Finalmente se decidió usar la arquitectura \gls{API REST}, por lo que investigó su funcionamiento mediante el paquete nativo ``UnityWebRequest'' y empezó la aplicación final con la implementación de ésta en Unity.
 
 Una vez estaba hecha la comunicación con el servidor diseñó e implementó una aplicación final con soporte para las gafas de \gls{vr} y el traje de captura de movimiento en el que se conectase con el servidor y se pueda ver el resultado del modelo elegido en tiempo real y como un \gls{npc} reacciona a los gestos predichos por éste.
 
