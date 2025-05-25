@@ -3,12 +3,12 @@
 En este capítulo se presenta el estado del arte de los distintos elementos que componen el trabajo. Estos campos son la comunicación no verbal en entornos virtuales, la captura de movimiento, distintos modelos de \gls{ia}, motores de videojuegos y el estado actual de los entornos virtuales.
 
 \section{Entornos virtuales}
-Como se puede ver en el artículo \cite{NOVE} se empezó a hablar en la década de los 90 de entornos virtuales y el \gls{metaverso} como nuevas formas de comunicarse con las personas.
+Como se puede ver en el artículo \cite{NOVE}, se empezó a hablar en la década de los 90 de entornos virtuales y el \gls{metaverso} como nuevas formas de comunicarse con las personas.
 Estos entornos virtuales al principio eran muy sencillos, con pocas actividades que realizar y el chat escrito como única forma de comunicarse. Algún ejemplo de estos entornos virtuales eran el Second Life o el Habbo Hotel.
 
 Para continuar hablando de los entornos virtuales es necesario introducir los conceptos de ``inmersión'' y ``presencia'': dos términos que, a menudo se usan como sinónimos, pero son ligeramente distintos aunque están muy relacionados.
-Como lo define el artículo \cite{MRPI}, la presencia es la calidad experimental en entornos virtuales mientras que la inmersión está asociado con los aspectos técnicos de un sistema virtual que ayudan al usuario a potenciar la sensación de presencia.
-Estudios recientes como \cite{FPPS} demuestran como la presencia, tanto la nuestra propia como social, son potenciadores del apoyo social percibido, lo que se asocia con el bienestar de los usuarios; mientras que el estudio \cite{GVR} muestra que, aunque no haya mejoras performáticas entre jugar en entornos inmersivos (\gls{vr}) y no inmersivos (un ordenador), los jugadores encontraron más emocionantes y con mayor presencia los entornos interactivos.
+Como lo define el artículo \cite{MRPI}, la presencia es la calidad experimental en entornos virtuales; mientras que la inmersión está asociado con los aspectos técnicos de un sistema virtual que ayudan al usuario a potenciar la sensación de presencia.
+Estudios recientes como \cite{FPPS} demuestran como la presencia, tanto la nuestra propia como la social, son potenciadores del apoyo social percibido, lo que se asocia con el bienestar de los usuarios; mientras que el estudio \cite{GVR} muestra que, aunque no haya mejoras performáticas entre jugar en entornos inmersivos (\gls{vr}) y no inmersivos (un ordenador), los jugadores encontraron más emocionantes y con mayor presencia los entornos interactivos.
 Es por esto último que con la aparición de la \gls{vr} se hicieron populares entornos virtuales focalizados en esta tecnología.
 
 Con todo esto es natural que las empresas inviertan en tecnologías que aumenten la sensación de inmersión para lograr una mayor presencia.
@@ -34,10 +34,10 @@ Para lograr esto se han desarrollado diferentes tipos de tecnologías: óptica, 
 
 \subsection{Captura de movimiento óptica}
 La captura de movimiento óptica consiste en el uso de cámaras para la captura.
-Según el artículo \cite{OPTICAL} esta captura se puede dividir en monocular o multivista dependiendo del número de cámaras y según si utilizan marcadores o no.
+Según el artículo \cite{OPTICAL} esta captura se puede dividir en monocular o multivista dependiendo del número de cámaras, y según si utilizan marcadores o no.
 En el mismo artículo explica el funcionamiento de la captura óptica multivista con el uso de marcdores, el cual se utiliza en gran medida en la industria audiovisual.
 Este tipo de captura óptica necesita al menos de un conjunto de cámaras sincronizadas (dos o más), un traje con marcadores en puntos significativos (articulaciones sobretodo) y un sistema de adquisición de varios vídeos simultáneos.
-La reconstrucción del movimiento se basa en la sincronía de las cámaras y la capacidad de detección de los mismos marcadores desde diferentes puntos de vista se puede reconstruir en 3D los marcadores mediante la triangulación de los distintos puntos de vista.
+La reconstrucción del movimiento se basa en la sincronía de las cámaras y la capacidad de detección de los mismos marcadores desde diferentes puntos de vista, haciendo que se pueda reconstruir en 3D los marcadores mediante la triangulación de los distintos puntos de vista.
 
 Un ejemplo de la captura de movimiento óptica monocular y sin marcadores son los sistemas basados en cámaras 3D que utilizan los \gls{IRs} para calcular la profundidad. Según el artículo \cite{KINECT} la Kinect (Microsoft, 2010) utilizaba esta tecnología para ello.
 Consiste en un proyector de \gls{IRs} cuyos rayos atraviesan una rejilla de difracción, convirtiéndose en un conjunto de puntos que, como se sabe la geometría relativa entre este proyector y una cámara de \gls{IRs} que venía incorporada, se podía triangular la posición de un objeto haciendo coincidir un punto observado con uno de los puntos del proyector.
@@ -46,7 +46,7 @@ Consiste en un proyector de \gls{IRs} cuyos rayos atraviesan una rejilla de difr
 La captura de movimiento mecánica se consigue mediante sensores inerciales.
 Según se puede ver en \cite{XSENS}, el traje Xsens MVN es un ejemplo de ello.
 No utiliza cámaras o marcadores si no la combinación de giroscopios, acelerómetros y magnetómetros.
-Con los datos recibidos de estos sensores se puede estimar la rotación de los diferentes puntos mientras que la posición se puede estimar mediante supuestos de una cadena cinemática.
+Con los datos recibidos de estos sensores se puede estimar la rotación de los diferentes puntos, mientras que la posición se puede estimar mediante supuestos de una cadena cinemática.
 En la figura \ref{fig:XSensTraje} se puede ver el traje visto desde la espalda.
 
 \begin{figure}[H]
@@ -92,7 +92,7 @@ Este modelo supuso una mejoría ante la programación de videojuegos con objetos
 
 Desde 2022 mediante el paquete Unity DOTS (Data-Oriented Technology Stack) \footnote{Enlace a la documentación del paquete DOTS: \url{https://docs.unity3d.com/Packages/com.unity.entities@1.3/manual/index.html}} se pueden crear videojuegos siguiendo la arquitectura Entidad-Componente-Sistema (ECS).
 Esta arquitectura consiste en separar la lógica de los datos, ya que los datos se guardan en componentes mientras que la lógica la ejecutan los sistemas.
-ECS supone una mejoría a EC gracias a la separación mencionada ya que mejora la escabilidad del código y la modularidad.
+ECS supone una mejoría a EC gracias a la separación mencionada, ya que mejora la escabilidad del código y la modularidad.
 
 \subsection{Unreal}
 Unreal es un motor de videojuegos creado por Epic Games en 1998 con el lanzamiento de Unreal Engine 1.
