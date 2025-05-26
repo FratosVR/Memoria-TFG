@@ -3,14 +3,14 @@
 
 El banco de animaciones en el que fueron buscados los gestos necesarios fue Mixamo. \footnote{Página web de Mixamo: \url{https://www.mixamo.com}}
 
-Mixamo es una página web creada por Adobe en la que se encuntran de manera gratuita modelos con un \gls{rig} humanoide y animaciones para estos rigs, además de una funcionalidad que permite crear el \gls{rig} de un personaje que se suba a la página.
+Mixamo es una página web creada por Adobe en la que se encuentran de manera gratuita modelos con un \gls{rig} humanoide y animaciones para estos rigs, además de una funcionalidad que permite crear el \gls{rig} de un personaje que se suba a la página.
 En la página hay un buscador en el que puedes buscar tipos de animaciones, pero como no es viable descargarse todas las animaciones de todos los gestos buscados se usó una herramienta para automatizarlo.
 
 \subsection{Herramienta para descargarse animaciones de Mixamo de forma automática}
 
-Esta herramienta se encontró en GitHub hecha por el usuario \textit{juanjo4martinez}\footnote{Enlace al perfil del creador de la herramienta \url{https://github.com/juanjo4martinez}}. La herramienta (mixamo-downloader\footnote{Enlace al repositorio de la herramienta \url{https://github.com/juanjo4martinez/mixamo-downloader}}) permite buscar y descargar animacions de Mixamo de manera automática y con el uso de distintos filtros para acomodarse a lo requerido por el usuario.
+Esta herramienta se encontró en GitHub hecha por el usuario \textit{juanjo4martinez}\footnote{Enlace al perfil del creador de la herramienta \url{https://github.com/juanjo4martinez}}. La herramienta (mixamo-downloader\footnote{Enlace al repositorio de la herramienta \url{https://github.com/juanjo4martinez/mixamo-downloader}}) permite buscar y descargar animaciones de Mixamo de manera automática y con el uso de distintos filtros para acomodarse a lo requerido por el usuario.
 
-Al empezar a usarse la herramienta se detectó que al empezar a bajar animaciones, dependiendo del nombre que tuvieran las mismas, el programa era incapaz de guardar dichas animaciones. Esto se debía a la incompatibilidad de distintos sistemas de archivos para usar determinados caracteres en sus nombres de archivos (interrogaciones, barras o dobles barras, dos puntos, etc). Se hizo un \gls{fork} de la herramienta \footnote{Enlace al repositorio con los arreglos \url{https://github.com/ALK222/mixamo-downloader}} que efectua estos arreglos y añade la opción de reescribir animaciones anteriores que tuvieran el mismo nombre. La interfaz completa de la herramienta arreglada se puede ver en la figura \ref{fig:mixamo-downloader}.
+Al empezar a usarse la herramienta se detectó que al empezar a bajar animaciones, dependiendo del nombre que tuvieran las mismas, el programa era incapaz de guardar dichas animaciones. Esto se debía a la incompatibilidad de distintos sistemas de archivos para usar determinados caracteres en sus nombres de archivos (interrogaciones, barras o dobles barras, dos puntos, etc). Se hizo un \gls{fork} de la herramienta \footnote{Enlace al repositorio con los arreglos \url{https://github.com/ALK222/mixamo-downloader}} que efectúa estos arreglos y añade la opción de reescribir animaciones anteriores que tuvieran el mismo nombre. La interfaz completa de la herramienta arreglada se puede ver en la figura \ref{fig:mixamo-downloader}.
 
 \begin{figure}[H]
     \centering
@@ -45,7 +45,7 @@ Para ello se decidió pasar la información relevante de los huesos en la toda l
     ...                 \\
 \end{longtblr}
 
-Como no es viable ni escalable meter todas las animaciones a un proyecto de Unity ni crear un \gls{Animator} con todas estas se ideó una herramienta en Unity que se metiese todas las animaciones y contruía el Animator en tiempo de ejecución.
+Como no es viable ni escalable meter todas las animaciones a un proyecto de Unity ni crear un \gls{Animator} con todas estas se ideó una herramienta en Unity que se metiese todas las animaciones y construía el Animator en tiempo de ejecución.
 
 \subsection{Carga mediante asset bundles}
 En un principio se pensó en usar los assets bundles para cargar las animaciones.
@@ -71,7 +71,9 @@ Una vez finalizada la ejecución de una animación se cierra el \gls{csv} y se b
     \label{fig:frame-timelapse}
 \end{figure}
 
-En la figura \ref{fig:MixamoDumper} se puede ver un diagrama de flujo del funcionamiento de esta herramienta.
+En la figura \ref{fig:MixamoDumper} se puede ver un diagrama de flujo del funcionamiento de esta herramienta, mientras que el código de la misma es público\footnote{Enlace al repositorio de la herramienta: \url{https://github.com/FratosVR/Mixamo-Animation-Dumper}}.
+
+\newpage
 
 \begin{figure}[H]
     \centering
@@ -88,17 +90,17 @@ La ventaja de hacer esta herramienta es que es independiente del número de gest
 
 Los \glspl{csv} restantes se copiaron en un nuevo \textit{dataset} de Kaggle en una carpeta llamada ``full\_animations''. Una vez subidos estos datos, se creó una clase en Python para estandarizar estos \glspl{csv}. Los datos se estandarizaron con el siguiente criterio:
 \begin{itemize}
-    \item Todas las animaciones deben de tener el mismo número de frames. Para ello se estandarizará la duracion a 90 frames que es el número de \gls{fps} que usan las gafas de \gls{vr} de Meta Quest 2 y la herramienta Mixamo Animation Dumper.
+    \item Todas las animaciones deben de tener el mismo número de frames. Para ello se estandarizará la duración a 90 frames que es el número de \gls{fps} que usan las gafas de \gls{vr} de Meta Quest 2 y la herramienta Mixamo Animation Dumper.
     \item Las animaciones que duraran más de 90 frames se dividen en varias animaciones de 90 frames o menos.
     \item Las animaciones que duraran menos de 90 frames se repiten desde el inicio hasta completar los 90 frames.
     \item Las animaciones que no lleguen a 10 frames se consideran inválidas y se eliminan.
 \end{itemize}
 
-Este proceso se puede ver de manera más visual en la figura \ref{fig:data_cleaner} y se puede ver el diagrama de la clase DataLoader en la figura \ref{fig:data_loader}, algunas de las funciones de esta clase se verán en los próximos apartados.
+Este proceso se puede ver de manera más visual en la figura \ref{fig:data_cleaner} y se puede ver el diagrama de la clase DataLoader \footnote{Enlace de la herramienta \url{https://github.com/FratosVR/Models/src/DataLoader.py}} en la figura \ref{fig:data_loader}, algunas de las funciones de esta clase se verán en los próximos apartados.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/data_cleaner.pdf}
+    \includegraphics[width=0.8\textwidth]{Imagenes/Vectorial/data_cleaner.pdf}
     \caption{Diagrama de flujo del proceso de limpieza de datos (funciones data\_cleaner y data\_cleaner\_aux de la clase DataLoader)}
     \label{fig:data_cleaner}
 \end{figure}

@@ -6,7 +6,7 @@ Debido a que las animaciones encontradas en el banco de animaciones no eran las 
 \label{sec:traje}
 
 Para poder recoger el movimiento de los usuarios era necesario configurar el traje y poder usarlo dentro de Unity.
-El traje usado, Preception Neuron 3, viene con:
+El traje usado, Perception Neuron 3, viene con:
 
 \begin{enumerate}
 	\renewcommand{\theenumi}{\alph{enumi}}
@@ -77,21 +77,21 @@ Este componente tiene una lista de Transforms que usa para mapear los huesos del
 \subsubsection{Limitaciones encontradas con el traje}
 Durante el desarrollo del proyecto han habido dos limitaciones con respecto al traje.
 
-La primera de ellos es la ausencia de guantes para capturar los dedos, ya que no vienen incluídos con el traje.
+La primera de ellos es la ausencia de guantes para capturar los dedos, ya que no vienen incluidos con el traje.
 A pesar de que esto causa que los dedos estén siempre en la misma posición con respecto a la mano no ha causado ningún problema en la identificación de gestos
 
-La segunda limiación es la cantidad de ruido electromagnético presente en nuestro espacio de trabajo: la Facultad de Informática de la Universidad Complutense de Madrid.
+La segunda limitación es la cantidad de ruido electromagnético presente en nuestro espacio de trabajo: la Facultad de Informática de la Universidad Complutense de Madrid.
 Este ruido causaba interferencias con el traje, haciendo que la señal con el ordenador fuese pobre constantemente y no se capturasen los movimientos correctamente.
 
 Para solventarlo se requirió de un cable alargador de USB 2.0 de 10 metros que se conectaba al ordenador en el que se enchufaba el receptor y se acercaba lo más posible al traje, ampliando la señal al máximo.
 
-Una vez conectado el traje, solventadas limitaciones y sabiendo los puntos que detecta era necesario un dataset que se puediera acoplar al esqueleto que proporciona el traje.
+Una vez conectado el traje, solventadas limitaciones y sabiendo los puntos que detecta era necesario un dataset que se pudiera acoplar al esqueleto que proporciona el traje.
 
 \subsection{Herramienta de recogida de datos con usuarios reales}
 La herramienta se debe conectar con el traje como hemos mencionado anteriormente en el apartado \ref{subsec:NeuronMocapLive}
-Una vez conectado se le debe pasar al componente MocapDumper el nombre de la animación que se va a grabar, el número de toma de esa animación y un número que sirva como identifidor de usuario.
+Una vez conectado se le debe pasar al componente MocapDumper el nombre de la animación que se va a grabar, el número de toma de esa animación y un número que sirva como identificador de usuario.
 
-Finalmente cuando la herramienta está ejecutándose y se le da a la tecla ``espacio'' genera un CSV del formato ``animación\_User\_Número de ususario\_Take\_Número de toma'' (si el fichero ya existía lo sobreescribe), escribe la misma cabecera del CSV que se menciona en la tabla \ref{tab:cabecera-csv-completa} y pone la aplicación en estado de grabación.
+Finalmente cuando la herramienta está ejecutándose y se le da a la tecla ``espacio'' genera un CSV del formato ``animación\_User\_Número de usuario\_Take\_Número de toma'' (si el fichero ya existía lo sobreescribe), escribe la misma cabecera del CSV que se menciona en la tabla \ref{tab:cabecera-csv-completa} y pone la aplicación en estado de grabación.
 En este estado la aplicación escribe en cada frame todos los componentes de la posición y rotación (en forma de vector de ángulos de Euler) de cada hueso.
 Cuando se le vuelve a dar al espacio la aplicación cierra el fichero y vuelve a un estado de no grabación.
 
@@ -117,12 +117,14 @@ Lo siguiente era tener un sitio en el que hacer las pruebas. Debido a que las pr
 
 Una vez se cerró el formulario, se procedió a hacer un algoritmo que asignara la mayor cantidad de citas posibles dadas las restricciones de tiempo de los usuarios y los días disponibles. El algoritmo\footnote{Enlace al algoritmo: \url{https://github.com/FratosVR/Models/blob/main/citas_generacion_dataset/Scheduler.py}} usa un esquema de ramificación y poda para conseguir la combinación con mayor cantidad de citas disponibles sin tardar más de 10 segundos en procesar las combinaciones válidas.
 
+Para poder recolectar los datos, se hizo una herramienta\footnote{Enlace del repositorio \url{https://github.com/FratosVR/Mixamo-Animation-Dumper}} que funciona igual que la herramienta del apartado anterior pero usando los movimientos de los usuarios en vez de los de Mixamo.
+
 Finalmente desde el día 14/04/2025 a las 9:00 hasta el día 17/04/2025 a las 19:30 se pudo grabar en el despacho 216 (Sala de grabaciones) de la Facultad de Informática de la Universidad Complutense de Madrid.
 De los 75 usuarios apuntados finalmente se presentaron 65, consiguiendo así 975 animaciones en formato CSV, 195 de cada gesto. En la figura \ref{fig:PruebasLidia} se muestra una fotografía de un usuario durante el proceso de calibración.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{Imagenes/Vectorial/LidiaPruebasBlurr.pdf}
+	\includegraphics[width=0.3\textwidth]{Imagenes/Vectorial/LidiaPruebasBlurr.pdf}
 	\caption{Fotografía de un usuario en las pruebas}
 	\label{fig:PruebasLidia}
 \end{figure}
