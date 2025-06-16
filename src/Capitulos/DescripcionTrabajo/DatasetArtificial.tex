@@ -73,7 +73,11 @@ Una vez finalizada la ejecución de una animación se cierra el \gls{csv} y se b
 
 En la figura \ref{fig:MixamoDumper} se puede ver un diagrama de flujo del funcionamiento de esta herramienta, mientras que el código de la misma es público\footnote{Enlace al repositorio de la herramienta: \url{https://github.com/FratosVR/Mixamo-Animation-Dumper}} y se puede ver en el apéndice \ref{appendix:MixamoDumperCode}.
 
-\newpage
+El número de animaciones que se consiguieron grabar se puede ver en la figura \ref{fig:AnimacionesBruto}, donde se puede observar un desbalanceo de algunas animaciones (bailar o pelear) frente a otras (saludar o señalar).
+
+Al finalizar todas las animaciones se cierra el editor de Unity y se procesan los CSV resultantes.
+
+La ventaja de hacer esta herramienta es que es independiente del número de gestos y de animaciones por cada gesto, lo que hace que esta herramienta haga escalable el caso de que se quieran introducir o quitar gestos.
 
 \begin{figure}[H]
     \centering
@@ -82,7 +86,6 @@ En la figura \ref{fig:MixamoDumper} se puede ver un diagrama de flujo del funcio
     \label{fig:MixamoDumper}
 \end{figure}
 
-El número de annimaciones que se consiguieron grabar se puede ver en la figura \ref{fig:AnimacionesBruto}, donde se puede observar un desbalanceo de algunas animaciones (bailar o pelear) frente a otras (saludar o señalar).
 
 \begin{figure}[H]
     \centering
@@ -91,9 +94,6 @@ El número de annimaciones que se consiguieron grabar se puede ver en la figura 
     \label{fig:AnimacionesBruto}
 \end{figure}
 
-Al finalizar todas las animaciones se cierra el editor de Unity y se procesan los CSV resultantes.
-
-La ventaja de hacer esta herramienta es que es independiente del número de gestos y de animaciones por cada gesto, lo que hace que esta herramienta haga escalable el caso de que se quieran introducir o quitar gestos.
 
 \subsection{Tratamiento de CSV resultantes}
 
